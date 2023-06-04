@@ -1,0 +1,18 @@
+title = "Example from Weaver and Gere, Matrix Analysis of Framed Structures"
+[coordinates]
+xy = [[100.0, 75.0], [0.0, 75.0], [200.0, 0.0]]
+
+[connectivity]
+conn = [[2, 1, 1], [1, 3, 1]]
+
+[boundary]
+bc = [[2, 1, 1, 1], [3, 1, 1, 1]]
+
+[materials]
+mprop = [[1.0e4, 10, 1.0e3]]
+
+[jointloads]
+jtloads = [[1, 0, -10.0, -1000.0]]
+
+[memberloads]
+memloads = [[1, 0.0, 12.0,200.0, 0.0, 12.0, -200.0], [2, -6.0, 8.0, 250.0, -6.0, 8.0, -250.0]]
