@@ -1,3 +1,5 @@
+import sqlite3
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -15,6 +17,13 @@ def atba(a, b):
     return np.dot(np.dot(a.T, b), a)
 
 
+def array2df(x, columns=None, dtypes=None):
+    df = pd.DataFrame(x, columns=columns)
+    if dtypes:
+        df = df.astype(dtypes)
+    return df
+
+
 # Location Matrix. Related to structure
 def pf_calclm(n, df_bc: pd.DataFrame):
     """
@@ -22,11 +31,9 @@ def pf_calclm(n, df_bc: pd.DataFrame):
     """
     lm = np.zeros((n, 3), dtype=np.int_)
     nd = 0
-    ns = bc.shape[0]
+    ns = len(bc)
     for i in range(ns):
-        # node = bc[i, 0]
         node = int(df_bc.iloc[i, 0])  # type: ignore
-        print(f"*** {type(node)}")
         lm[node - 1, 0:3] = bc[i, 1:4]
 
     for node in range(n):
@@ -40,7 +47,7 @@ def pf_calclm(n, df_bc: pd.DataFrame):
 
 
 # Stiffness matrix in local coordinate system. Related to element
-def pf_stiff(E: float, A: float, Iz: float, L: float) -> Matrix:
+def pf_stiff(E: float, A: float, Iz: float, L: float) -> NDArrayFloat:
     """
     Calculate stiffness of a plane frame member in local coordinate system
     """
@@ -74,7 +81,7 @@ def pf_stiff(E: float, A: float, Iz: float, L: float) -> Matrix:
 # Rotation matrix. Related to element
 def pf_calcrot(dc):
     """
-    Calculate rotation matrix of a plane frame member
+    Calculate rotation matrix of a plane frame member given its direction cosines
     """
     r = np.zeros((6, 6), dtype=float)
     cx = dc[0]
@@ -100,64 +107,64 @@ def pf_calclen(xy1, xy2):
 
 
 # Utility function to get number of end joints. Related to element
-def pf_get_endjts(imem, conn):
+def pf_get_endjts(imem, df_conn: pd.DataFrame):
     """Return numbers of first and second end of a plane frame member"""
-    jt1 = conn[imem - 1, 0]
-    jt2 = conn[imem - 1, 1]
+    jt1 = df_conn.iloc[imem - 1, 0]
+    jt2 = df_conn.iloc[imem - 1, 1]
     return jt1, jt2
 
 
 # Utility function to get coordinates of end joints. Related to element
-def pf_get_endcoord(imem, xy, conn):
+def pf_get_endcoord(imem, df_xy, df_conn):
     """Return the coordinates of the first and second end of a plane frame member"""
-    jt1, jt2 = pf_get_endjts(imem, conn)
-    xy1 = xy[jt1 - 1, :]
-    xy2 = xy[jt2 - 1, :]
+    jt1, jt2 = pf_get_endjts(imem, df_conn)
+    xy1 = df_xy.iloc[int(jt1) - 1, :]  # type: ignore
+    xy2 = df_xy.iloc[int(jt2) - 1, :]  # type: ignore
     return xy1, xy2
 
 
 # Utility function to get member properties. Related to element
-def pf_get_memprop(imem, xy, conn, mprop):
+def pf_get_memprop(imem, df_xy, df_conn, df_mprop):
     """Return the properties of specified plane frame member"""
-    m = conn[imem - 1, 2] - 1
-    E = mprop[m, 0]
-    A = mprop[m, 1]
-    Iz = mprop[m, 2]
-    xy1, xy2 = pf_get_endcoord(imem, xy, conn)
+    m = df_conn.iloc[imem - 1, 2] - 1
+    E = df_mprop.iloc[m, 0]
+    A = df_mprop.iloc[m, 1]
+    Iz = df_mprop.iloc[m, 2]
+    xy1, xy2 = pf_get_endcoord(imem, df_xy, df_conn)
     L, dc = pf_calclen(xy1, xy2)
     return E, A, Iz, L, dc
 
 
 # Utility function to get dof numbers at end joints. Related to element
-def pf_get_dof(imem, conn, lm):
+def pf_get_dof(imem, df_conn, lm):
     """Return degree of freedom numbers of the ends of a plane frame member"""
-    jt1, jt2 = pf_get_endjts(imem, conn)
+    jt1, jt2 = pf_get_endjts(imem, df_conn)
     memdof = np.array([0, 0, 0, 0, 0, 0])
-    memdof[0:3] = lm[jt1 - 1, :]
-    memdof[3:6] = lm[jt2 - 1, :]
+    memdof[0:3] = lm[jt1 - 1, :]  # type: ignore
+    memdof[3:6] = lm[jt2 - 1, :]  # type: ignore
     return memdof
 
 
 # Stiffness matrix in structure coordinate system. Related to element
-def pf_gstiff(imem, xy, conn, mprop):
+def pf_gstiff(imem, df_xy, df_conn, df_mprop):
     """
     Calculate the stiffness matrix of a plane frame member in strucutre
     coordinate system
     """
-    E, A, Iz, L, dc = pf_get_memprop(imem, xy, conn, mprop)
+    E, A, Iz, L, dc = pf_get_memprop(imem, df_xy, df_conn, df_mprop)
     r = pf_calcrot(dc)
     k = pf_stiff(E, A, Iz, L)
     return atba(r, k)
 
 
 # Assemble structure stiffness matrix, contribution from one member. Related to structure
-def pf_assemssm(imem, xy, conn, mprop, lm, ssm):
+def pf_assemssm(imem, df_xy, df_conn, df_mprop, lm, ssm):
     """
     Superpose stiffness matrix of plane frame member on the structure
     stiffness matrix
     """
-    K = pf_gstiff(imem, xy, conn, mprop)
-    memdof = pf_get_dof(imem, conn, lm)
+    K = pf_gstiff(imem, df_xy, df_conn, df_mprop)
+    memdof = pf_get_dof(imem, df_conn, lm)
     for i in range(len(memdof)):
         if memdof[i]:
             for j in range(len(memdof)):
@@ -169,50 +176,50 @@ def pf_assemssm(imem, xy, conn, mprop, lm, ssm):
 
 
 # Assemble structure stiffness matrix, contribution from all members. Related to structure
-def pf_ssm(xy, conn, df_bc, mprop):
+def pf_ssm(df_xy, df_conn, df_bc, df_mprop):
     """
     Assemble structure stiffness matrix by superposing stiffness matrices of
     individual members
     """
-    n = xy.shape[0]
+    n = len(df_xy)
     lm, ndof = pf_calclm(n, df_bc)
-    nmem = conn.shape[0]
+    nmem = len(conn)
     ssm = np.zeros((ndof, ndof), dtype=float)
     for imem in range(1, nmem + 1):
-        ssm = pf_assemssm(imem, xy, conn, mprop, lm, ssm)
+        ssm = pf_assemssm(imem, df_xy, df_conn, df_mprop, lm, ssm)
     return ssm, lm, ndof
 
 
 # Assemble structure loadvector due to all joint loads. Related to structure
-def pf_assem_loadvec_jl(lm, jtloads, P):
+def pf_assem_loadvec_jl(lm, df_jtloads, P):
     """
     Superpose joint loads on structure load vector
     """
-    nloads = jtloads.shape[0]
+    nloads = len(jtloads)
     for iload in range(nloads):
-        jt = int(jtloads[iload, 0])
+        jt = int(df_jtloads.iloc[iload, 0])
         jtdof = lm[jt - 1, :]
         for j in range(3):
             if jtdof[j]:
                 i = jtdof[j] - 1
-                P[i] += jtloads[iload, j + 1]
+                P[i] += df_jtloads.iloc[iload, j + 1]
     return P
 
 
 # Assemble structure loadvector due to one member load. Related to structure
-def pf_assem_loadvec_ml(iload, xy, conn, lm, memloads, P):
+def pf_assem_loadvec_ml(iload, df_xy, df_conn, lm, df_memloads, P):
     """
     Superpose equivalent joint loads due to loads applied on members onto
     structure load vector
     """
-    imem = int(memloads[iload - 1, 0])
-    xy1, xy2 = pf_get_endcoord(imem, xy, conn)
+    imem = int(df_memloads.iloc[iload - 1, 0])
+    xy1, xy2 = pf_get_endcoord(imem, df_xy, df_conn)
     L, dc = pf_calclen(xy1, xy2)
     r = pf_calcrot(dc)
     ml = memloads[iload - 1, 1:7]
     ml = ml.reshape(len(ml), 1)
     am = np.dot(-r.T, ml)
-    memdof = pf_get_dof(imem, conn, lm)
+    memdof = pf_get_dof(imem, df_conn, lm)
     for i in range(6):
         if memdof[i]:
             ii = memdof[i] - 1
@@ -221,30 +228,30 @@ def pf_assem_loadvec_ml(iload, xy, conn, lm, memloads, P):
 
 
 # Assemble structure loadvector due to all loads. Related to structure
-def pf_loadvec(xy, conn, jtloads, memloads, ndof, lm):
+def pf_loadvec(df_xy, df_conn, df_jtloads, df_memloads, ndof, lm):
     """
     Assemble structure load vector due to joint loads and loads applied
     directly on members
     """
     P = np.zeros((ndof, 1), dtype=float)
-    P = pf_assem_loadvec_jl(lm, jtloads, P)
-    nml = memloads.shape[0]
+    P = pf_assem_loadvec_jl(lm, df_jtloads, P)
+    nml = len(df_memloads)
     for iload in range(1, nml + 1):
-        P = pf_assem_loadvec_ml(iload, xy, conn, lm, memloads, P)
+        P = pf_assem_loadvec_ml(iload, df_xy, df_conn, lm, df_memloads, P)
     return P
 
 
 # Element end forces in one element. Related to element
-def pf_mem_endforces(imem, xy, conn, mprop, memloads, lm, x):
+def pf_mem_endforces(imem, df_xy, df_conn, df_mprop, df_memloads, lm, x):
     """
     Calculate member end forces from joint displacements, for one chosen member
     """
-    xy1, xy2 = pf_get_endcoord(imem, xy, conn)
+    xy1, xy2 = pf_get_endcoord(imem, df_xy, df_conn)
     L, dc = pf_calclen(xy1, xy2)
-    E, A, Iz, L, dc = pf_get_memprop(imem, xy, conn, mprop)
+    E, A, Iz, L, dc = pf_get_memprop(imem, df_xy, df_conn, df_mprop)
     r = pf_calcrot(dc)
     u = np.zeros((6, 1), dtype=float)
-    memdof = pf_get_dof(imem, conn, lm)
+    memdof = pf_get_dof(imem, df_conn, lm)
     for i in range(6):
         if memdof[i]:
             idof = memdof[i]
@@ -254,15 +261,16 @@ def pf_mem_endforces(imem, xy, conn, mprop, memloads, lm, x):
     f = np.zeros((6, 1), dtype=float)
     f = np.dot(k, uu)
 
-    nml = memloads.shape[0]
+    nml = len(df_memloads)
     for i in range(nml):
-        if memloads[i, 0] == imem:
-            f += memloads[i, 1:].reshape(6, 1)
+        if df_memloads.iloc[i, 0] == imem:
+            print("***", df_memloads.iloc[i, 1:])
+            f += df_memloads.iloc[i, 1:].values.reshape(6, 1)
     return f
 
 
 def pf_print_disp(lm, x):
-    n = lm.shape[0]
+    n = len(lm)
     for i in range(n):
         print(f"{(i + 1):5d}", end="")
         for j in range(3):
@@ -304,13 +312,13 @@ def input_data():
     return xy, conn, bc, mprop, jtloads, memloads
 
 
-def main(title, xy, conn, df_bc, mprop, jtloads, memloads):
+def main(title, df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads):
     print(f"{title}\n{'='*len(title)}")
-    ssm, lm, ndof = pf_ssm(xy, conn, df_bc, mprop)
+    ssm, lm, ndof = pf_ssm(df_xy, df_conn, df_bc, df_mprop)
     print_mat(f"\nNumber of degrees of freedom: {ndof:d}\n", lm)
     print_mat("\nStructure Stiffness Matrix\n", ssm)
 
-    P = pf_loadvec(xy, conn, jtloads, memloads, ndof, lm)
+    P = pf_loadvec(df_xy, df_conn, df_jtloads, df_memloads, ndof, lm)
     print_mat("\nLoad Vector\n", P)
 
     x = solve(ssm, P, assume_a="pos")
@@ -318,9 +326,11 @@ def main(title, xy, conn, df_bc, mprop, jtloads, memloads):
     pf_print_disp(lm, x * 1.0e3)
 
     print("\nMember End Forces")
-    for imem in range(1, conn.shape[0] + 1):
-        f = pf_mem_endforces(imem, xy, conn, mprop, memloads, lm, x)
+    for imem in range(1, len(df_conn) + 1):
+        f = pf_mem_endforces(imem, df_xy, df_conn, df_mprop, df_memloads, lm, x)
         print_mat("%5d" % imem, f.T)
+        disp = array2df(f.T, ["Px1", "Py1", "Mz1", "Px2", "Py2", "Mz2"])
+        print(disp)
     return 0
 
 
@@ -356,9 +366,39 @@ def data2df(
     df_mprop = df_mprop.astype(np.float_)
     df_jtloads = pd.DataFrame(jtloads, columns=["node", "Px", "Py", "Mz"])
     df_jtloads = df_jtloads.astype({"node": np.int_})
-    df_memloads = pd.DataFrame(memloads, columns=["node", "Px1", "Py1", "Mz1", "Px2", "Py2", "Mz2"])
-    df_memloads = df_memloads.astype({"node": np.int_})
+    df_memloads = pd.DataFrame(memloads, columns=["member", "Px1", "Py1", "Mz1", "Px2", "Py2", "Mz2"])
+    df_memloads = df_memloads.astype({"member": np.int_})
     return df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads
+
+
+def sqlite2df(dbfile: str):
+    p = Path(dbfile)
+    print(p, p.exists())
+    if not p.exists():
+        raise FileNotFoundError
+    try:
+        con = sqlite3.connect(dbfile)
+        xy = pd.read_sql("SELECT * FROM xy", con)
+        xy.drop("id", axis=1, inplace=True)
+
+        conn = pd.read_sql("SELECT * FROM conn", con)
+        conn.drop("id", axis=1, inplace=True)
+
+        bc = pd.read_sql("SELECT * FROM bc", con)
+        bc.drop("id", axis=1, inplace=True)
+
+        mprop = pd.read_sql("SELECT * FROM mprop", con)
+        mprop.drop("id", axis=1, inplace=True)
+
+        jtloads = pd.read_sql("SELECT * FROM jtloads", con)
+        jtloads.drop("id", axis=1, inplace=True)
+
+        memloads = pd.read_sql("SELECT * FROM memloads", con)
+        memloads.drop("id", axis=1, inplace=True)
+
+        return xy, conn, bc, mprop, jtloads, memloads
+    except Exception as e:
+        raise e
 
 
 # Utility functions. Not directly related to DSM
@@ -367,8 +407,7 @@ def print_mat(header: str, k: npt.NDArray[Any]) -> None:
     Print the array k, preceded by a header string. Each element of k is
     printed using the format string fmt
     """
-    m = k.shape[0]
-    n = k.shape[1]
+    m, n = k.shape
     print(f"{header} Size: {m} x {n}")
     for i in range(m):
         for j in range(n):
@@ -386,11 +425,6 @@ def print_df(header: str, df: pd.DataFrame) -> None:
 if __name__ == "__main__":
     # xy, conn, bc, mprop, jtloads, memloads = input_data()
     title, xy, conn, bc, mprop, jtloads, memloads = read_toml("weaver.toml")
-    df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = data2df(xy, conn, bc, mprop, jtloads, memloads)
-    main(title, xy, conn, df_bc, mprop, jtloads, memloads)
-    print_df("Node Coordinates", df_xy)
-    # cProfile.run('main(xy, conn, bc, mprop, jtloads, memloads)', 'pf_profile')
-    # import pstats
-    # p = pstats.Stats('pf_profile')
-    # p.strip_dirs().sort_stats('calls')
-    # p.print_stats()
+    # df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = data2df(xy, conn, bc, mprop, jtloads, memloads)
+    df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = sqlite2df("weaver.sqlite3")
+    main(title, df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
