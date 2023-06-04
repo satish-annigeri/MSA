@@ -1,23 +1,14 @@
+from typing import Any
+
 import numpy as np
 import numpy.typing as npt
+import pandas as pd
+import tomllib
 from scipy.linalg import solve
 
+NDArrayInt = npt.NDArray[np.int_]
+NDArrayFloat = npt.NDArray[np.float_]
 Matrix = npt.NDArray[np.float_]
-
-
-# Utility functions. Not directly related to DSM
-def print_mat(header: str, k: Matrix) -> None:
-    """
-    Print the array k, preceded by a header string. Each element of k is
-    printed using the format string fmt
-    """
-    m = k.shape[0]
-    n = k.shape[1]
-    print(f"{header} Size: {m} x {n}")
-    for i in range(m):
-        for j in range(n):
-            print(f"{k[i, j]:12.4f}", end="")
-        print()
 
 
 def atba(a, b):
@@ -25,15 +16,17 @@ def atba(a, b):
 
 
 # Location Matrix. Related to structure
-def pf_calclm(n, bc):
+def pf_calclm(n, df_bc: pd.DataFrame):
     """
     Calculate location matrix containing degree of freedom numbers of each node
     """
-    lm = np.zeros((n, 3), dtype=int)
+    lm = np.zeros((n, 3), dtype=np.int_)
     nd = 0
     ns = bc.shape[0]
     for i in range(ns):
-        node = bc[i, 0]
+        # node = bc[i, 0]
+        node = int(df_bc.iloc[i, 0])  # type: ignore
+        print(f"*** {type(node)}")
         lm[node - 1, 0:3] = bc[i, 1:4]
 
     for node in range(n):
@@ -176,13 +169,13 @@ def pf_assemssm(imem, xy, conn, mprop, lm, ssm):
 
 
 # Assemble structure stiffness matrix, contribution from all members. Related to structure
-def pf_ssm(xy, conn, bc, mprop):
+def pf_ssm(xy, conn, df_bc, mprop):
     """
     Assemble structure stiffness matrix by superposing stiffness matrices of
     individual members
     """
     n = xy.shape[0]
-    lm, ndof = pf_calclm(n, bc)
+    lm, ndof = pf_calclm(n, df_bc)
     nmem = conn.shape[0]
     ssm = np.zeros((ndof, ndof), dtype=float)
     for imem in range(1, nmem + 1):
@@ -285,13 +278,13 @@ def pf_print_disp(lm, x):
 def input_data():
     # Weaver & Gere
     xy = np.array([[100.0, 75.0], [0.0, 75.0], [200.0, 0.0]])
-    conn = np.array([[2, 1, 1], [1, 3, 1]])
-    bc: Matrix = np.array([[2, 1, 1, 1], [3, 1, 1, 1]])
-    mprop: Matrix = np.array([[1.0e4, 10, 1.0e3]], dtype=np.float_)
+    conn = np.array([[2, 1, 1], [1, 3, 1]], dtype=np.int_)
+    bc: NDArrayFloat = np.array([[2, 1, 1, 1], [3, 1, 1, 1]])
+    mprop: NDArrayFloat = np.array([[1.0e4, 10, 1.0e3]], dtype=np.float_)
     jtloads: Matrix = np.array([[1, 0, -10.0, -1000.0]], dtype=np.float_)
-    memloads = np.array([
-        [1, 0.0, 12.0,200.0, 0.0, 12.0, -200.0],
-        [2, -6.0, 8.0, 250.0, -6.0, 8.0, -250.0]], dtype=np.float_)
+    memloads = np.array(
+        [[1, 0.0, 12.0, 200.0, 0.0, 12.0, -200.0], [2, -6.0, 8.0, 250.0, -6.0, 8.0, -250.0]], dtype=np.float_
+    )
 
     # Hall & Kabaila
     # xy = np.array([[0.0, 8.0], [8.0, 8.0], [0.0, 4.0], [8.0, 4.0], [0.0, 0.0], [8.0, 0.0]], dtype=np.float_)
@@ -311,8 +304,9 @@ def input_data():
     return xy, conn, bc, mprop, jtloads, memloads
 
 
-def main(xy, conn, bc, mprop, jtloads, memloads):
-    ssm, lm, ndof = pf_ssm(xy, conn, bc, mprop)
+def main(title, xy, conn, df_bc, mprop, jtloads, memloads):
+    print(f"{title}\n{'='*len(title)}")
+    ssm, lm, ndof = pf_ssm(xy, conn, df_bc, mprop)
     print_mat(f"\nNumber of degrees of freedom: {ndof:d}\n", lm)
     print_mat("\nStructure Stiffness Matrix\n", ssm)
 
@@ -330,10 +324,71 @@ def main(xy, conn, bc, mprop, jtloads, memloads):
     return 0
 
 
+def read_toml(fname: str):
+    with open(fname) as f:
+        s = f.read()
+    data = tomllib.loads(s)
+    title = data["title"]
+    xy = np.array(data["coordinates"]["xy"], dtype=np.float_)
+    conn = np.array(data["connectivity"]["conn"], dtype=np.int_)
+    bc = np.array(data["boundary"]["bc"], dtype=np.int_)
+    mprop = np.array(data["materials"]["mprop"], dtype=np.float_)
+    jtloads = np.array(data["jointloads"]["jtloads"], dtype=np.float_)
+    memloads = np.array(data["memberloads"]["memloads"], dtype=np.float_)
+    return title, xy, conn, bc, mprop, jtloads, memloads
+
+
+def data2df(
+    xy: NDArrayFloat,
+    conn: NDArrayInt,
+    bc: NDArrayInt,
+    mprop: NDArrayFloat,
+    jtloads: NDArrayFloat,
+    memloads: NDArrayFloat,
+):  # , conn, bc, mprop, jtloads, memloads
+    df_xy = pd.DataFrame(xy, columns=["x", "y"])
+    df_xy = df_xy.astype(np.float_)
+    df_conn = pd.DataFrame(conn, columns=["node1", "node2", "mprop"])
+    df_conn = df_conn.astype(int)
+    df_bc = pd.DataFrame(bc, columns=["node", "ux", "uy", "rz"])
+    df_bc = df_bc.astype(np.int_)
+    df_mprop = pd.DataFrame(mprop, columns=["E", "A", "Iz"])
+    df_mprop = df_mprop.astype(np.float_)
+    df_jtloads = pd.DataFrame(jtloads, columns=["node", "Px", "Py", "Mz"])
+    df_jtloads = df_jtloads.astype({"node": np.int_})
+    df_memloads = pd.DataFrame(memloads, columns=["node", "Px1", "Py1", "Mz1", "Px2", "Py2", "Mz2"])
+    df_memloads = df_memloads.astype({"node": np.int_})
+    return df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads
+
+
+# Utility functions. Not directly related to DSM
+def print_mat(header: str, k: npt.NDArray[Any]) -> None:
+    """
+    Print the array k, preceded by a header string. Each element of k is
+    printed using the format string fmt
+    """
+    m = k.shape[0]
+    n = k.shape[1]
+    print(f"{header} Size: {m} x {n}")
+    for i in range(m):
+        for j in range(n):
+            print(f"{k[i, j]:12.4f}", end="")
+        print()
+
+
+def print_df(header: str, df: pd.DataFrame) -> None:
+    print(f"{header}\n{'='*len(header)}")
+    print(df.to_string(index=False))
+    print()
+
+
 # Main function
 if __name__ == "__main__":
-    xy, conn, bc, mprop, jtloads, memloads = input_data()
-    main(xy, conn, bc, mprop, jtloads, memloads)
+    # xy, conn, bc, mprop, jtloads, memloads = input_data()
+    title, xy, conn, bc, mprop, jtloads, memloads = read_toml("weaver.toml")
+    df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = data2df(xy, conn, bc, mprop, jtloads, memloads)
+    main(title, xy, conn, df_bc, mprop, jtloads, memloads)
+    print_df("Node Coordinates", df_xy)
     # cProfile.run('main(xy, conn, bc, mprop, jtloads, memloads)', 'pf_profile')
     # import pstats
     # p = pstats.Stats('pf_profile')
