@@ -265,7 +265,6 @@ def pf_mem_endforces(imem, df_xy, df_conn, df_mprop, df_memloads, lm, x):
     nml = len(df_memloads)
     for i in range(nml):
         if df_memloads.iloc[i, 0] == imem:
-            print("***", df_memloads.iloc[i, 1:])
             f += df_memloads.iloc[i, 1:].values.reshape(6, 1)
     return f
 
@@ -284,33 +283,11 @@ def pf_print_disp(lm, x):
     return 0
 
 
-def input_data():
-    # Weaver & Gere
-    xy = np.array([[100.0, 75.0], [0.0, 75.0], [200.0, 0.0]])
-    conn = np.array([[2, 1, 1], [1, 3, 1]], dtype=np.int_)
-    bc: NDArrayFloat = np.array([[2, 1, 1, 1], [3, 1, 1, 1]])
-    mprop: NDArrayFloat = np.array([[1.0e4, 10, 1.0e3]], dtype=np.float_)
-    jtloads: Matrix = np.array([[1, 0, -10.0, -1000.0]], dtype=np.float_)
-    memloads = np.array(
-        [[1, 0.0, 12.0, 200.0, 0.0, 12.0, -200.0], [2, -6.0, 8.0, 250.0, -6.0, 8.0, -250.0]], dtype=np.float_
-    )
-
-    # Hall & Kabaila
-    # xy = np.array([[0.0, 8.0], [8.0, 8.0], [0.0, 4.0], [8.0, 4.0], [0.0, 0.0], [8.0, 0.0]], dtype=np.float_)
-    # conn = np.array([[5, 3, 1], [3, 1, 1], [6, 4, 1], [4, 2, 1], [3, 4, 2], [1, 2, 2]], dtype=np.float_)
-    # bc = np.array([[5, 1, 1, 1], [6, 1, 1, 1]], dtype=np.float_)
-    # mprop = np.array([[20.0e6, 0.1, 0.0008], [20.0e6, 0.15, 0.0030]], dtype=np.float_)
-    # jtloads = np.array([], dtype=np.float_)
-    # memloads:Matrix = np.array([
-    #     [6, 0.0, 10.0, 20.0, 0.0, 10.0, -20.0],
-    #     [5, 0.0, 40.0, 53.3, 0.0, 40.0, -53.3]
-    # ], dtype=np.float_)
-
-    print_mat("\nJoint Coordinates\n", xy)
-    print_mat("\nMember Connectivity\n", conn)
-    print_mat("\nZero Boundary Conditions\n", bc)
-    print_mat("\nMember Properties\n", mprop)
-    return xy, conn, bc, mprop, jtloads, memloads
+def pf_print_memendforces(imem, f):
+    print(f"{imem:6d}", end=" ")
+    for j in range(len(f)):
+        print(f"{f.T[0, j]:12.4f}", end=" ")
+    print()
 
 
 def main(title, df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads):
@@ -323,16 +300,13 @@ def main(title, df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads):
     print_mat("\nLoad Vector\n", P)
 
     x = solve(ssm, P, assume_a="pos")
-    print("\nDisplacements")
+    print("\nNode Displacements")
     pf_print_disp(lm, x * 1.0e3)
 
     print("\nMember End Forces")
     for imem in range(1, len(df_conn) + 1):
         f = pf_mem_endforces(imem, df_xy, df_conn, df_mprop, df_memloads, lm, x)
-        print_mat("%5d" % imem, f.T)
-        disp = array2df(f.T, ["Px1", "Py1", "Mz1", "Px2", "Py2", "Mz2"])
-        print(disp)
-    return 0
+        pf_print_memendforces(imem, f)
 
 
 def read_toml(fname: str):
