@@ -55,3 +55,11 @@ Finally deactivate the virtual environment.
 >(venv) deactivate
 >
 ```
+
+## Limitations
+The package has the following limitations
+
+1. Analyses only plane frame structures, with only plane frame elements.
+2. Non-zero boundary conditions are currently not allowed. Only known zerodisplacement boundary condition is implemented.
+3. Member loads must be applied as equivalent member end-forces. Equivalent member end-forces must be calculated manually as the negative values from the reactions produces in the corresponding fixed-end member.
+4. Only member end-forces are calculates. Forces at points within the member are not calculated.
