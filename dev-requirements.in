@@ -1,3 +1,5 @@
 flake8
 ruff
 black
+mypy
+pandas-stubs
