@@ -290,8 +290,7 @@ def pf_print_memendforces(imem, f):
     print()
 
 
-def main(title, df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads):
-    print(f"{title}\n{'='*len(title)}")
+def main(df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads):
     ssm, lm, ndof = pf_ssm(df_xy, df_conn, df_bc, df_mprop)
     print_mat(f"\nNumber of degrees of freedom: {ndof:d}\n", lm)
     print_mat("\nStructure Stiffness Matrix\n", ssm)
@@ -339,10 +338,16 @@ def data2df(
     df_bc = df_bc.astype(np.int_)
     df_mprop = pd.DataFrame(mprop, columns=["E", "A", "Iz"])
     df_mprop = df_mprop.astype(np.float_)
-    df_jtloads = pd.DataFrame(jtloads, columns=["node", "Px", "Py", "Mz"])
-    df_jtloads = df_jtloads.astype({"node": np.int_})
-    df_memloads = pd.DataFrame(memloads, columns=["member", "Px1", "Py1", "Mz1", "Px2", "Py2", "Mz2"])
-    df_memloads = df_memloads.astype({"member": np.int_})
+    if len(jtloads) > 0:
+        df_jtloads = pd.DataFrame(jtloads, columns=["node", "Px", "Py", "Mz"])
+        df_jtloads = df_jtloads.astype({"node": np.int_})
+    else:
+        df_jtloads = pd.DataFrame(jtloads)
+    if len(memloads) > 0:
+        df_memloads = pd.DataFrame(memloads, columns=["member", "Px1", "Py1", "Mz1", "Px2", "Py2", "Mz2"])
+        df_memloads = df_memloads.astype({"member": np.int_})
+    else:
+        df_memloads = pd.DataFrame(memloads)
     return df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads
 
 
@@ -377,6 +382,10 @@ def sqlite2df(dbfile: str):
 
 
 # Utility functions. Not directly related to DSM
+def print_title(title: str):
+    print(f"{title}\n{'-'*len(title)}")
+
+
 def print_mat(header: str, k: npt.NDArray[Any]) -> None:
     """
     Print the array k, preceded by a header string. Each element of k is
@@ -402,4 +411,5 @@ if __name__ == "__main__":
     title, xy, conn, bc, mprop, jtloads, memloads = read_toml("weaver.toml")
     # df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = data2df(xy, conn, bc, mprop, jtloads, memloads)
     df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = sqlite2df("weaver.sqlite3")
-    main(title, df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
+    print_title(title)
+    main(df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)

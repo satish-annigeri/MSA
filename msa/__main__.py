@@ -38,21 +38,29 @@ def input_data(prob: str):
             memloads = np.array(
                 [[1, 0.0, 12.0, 200.0, 0.0, 12.0, -200.0], [2, -6.0, 8.0, 250.0, -6.0, 8.0, -250.0]], dtype=np.float_
             )
+    return title, xy, conn, bc, mprop, jtloads, memloads
+
+
+def echo_input(title, xy, conn, bc, mprop):
+    pf.print_title(title)
     pf.print_mat("\nJoint Coordinates\n", xy)
     pf.print_mat("\nMember Connectivity\n", conn)
     pf.print_mat("\nZero Boundary Conditions\n", bc)
     pf.print_mat("\nMember Properties\n", mprop)
-    return title, xy, conn, bc, mprop, jtloads, memloads
 
 
 if __name__ == "__main__":
     title, xy, conn, bc, mprop, jtloads, memloads = input_data("weaver")
+    pf.print_title(title)
     df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = pf.data2df(xy, conn, bc, mprop, jtloads, memloads)
-    pf.main(title, df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
+    pf.main(df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
 
-    # title, xy, conn, bc, mprop, jtloads, memloads = input_data("hall")
-    # df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = pf.data2df(xy, conn, bc, mprop, jtloads, memloads)
-    # pf.main(title, df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
+    print(f"\n{'='*90}\n")
+
+    title, xy, conn, bc, mprop, jtloads, memloads = input_data("hall")
+    pf.print_title(title)
+    df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = pf.data2df(xy, conn, bc, mprop, jtloads, memloads)
+    pf.main(df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
 
     # title, xy, conn, bc, mprop, jtloads, memloads = pf.read_toml("weaver.toml")
     # df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = pf.sqlite2df("weaver.sqlite3")
