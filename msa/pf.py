@@ -31,10 +31,10 @@ def pf_calclm(n, df_bc: pd.DataFrame):
     """
     lm = np.zeros((n, 3), dtype=np.int_)
     nd = 0
-    ns = len(bc)
+    ns = len(df_bc)
     for i in range(ns):
         node = int(df_bc.iloc[i, 0])  # type: ignore
-        lm[node - 1, 0:3] = bc[i, 1:4]
+        lm[node - 1, 0:3] = df_bc.iloc[i, 1:4]
 
     for node in range(n):
         for j in range(3):
@@ -183,7 +183,7 @@ def pf_ssm(df_xy, df_conn, df_bc, df_mprop):
     """
     n = len(df_xy)
     lm, ndof = pf_calclm(n, df_bc)
-    nmem = len(conn)
+    nmem = len(df_conn)
     ssm = np.zeros((ndof, ndof), dtype=float)
     for imem in range(1, nmem + 1):
         ssm = pf_assemssm(imem, df_xy, df_conn, df_mprop, lm, ssm)
@@ -195,7 +195,7 @@ def pf_assem_loadvec_jl(lm, df_jtloads, P):
     """
     Superpose joint loads on structure load vector
     """
-    nloads = len(jtloads)
+    nloads = len(df_jtloads)
     for iload in range(nloads):
         jt = int(df_jtloads.iloc[iload, 0])
         jtdof = lm[jt - 1, :]
@@ -216,8 +216,9 @@ def pf_assem_loadvec_ml(iload, df_xy, df_conn, lm, df_memloads, P):
     xy1, xy2 = pf_get_endcoord(imem, df_xy, df_conn)
     L, dc = pf_calclen(xy1, xy2)
     r = pf_calcrot(dc)
-    ml = memloads[iload - 1, 1:7]
-    ml = ml.reshape(len(ml), 1)
+    ml = df_memloads.iloc[iload - 1, 1:7]
+    # ml = ml.reshape(len(ml), 1)
+    ml = ml.values
     am = np.dot(-r.T, ml)
     memdof = pf_get_dof(imem, df_conn, lm)
     for i in range(6):
