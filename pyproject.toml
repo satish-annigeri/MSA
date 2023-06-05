@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pypfa"
+name = "msa"
 dynamic = ["version"]
-description = 'A Python program for matrix structural analysis of plane frames'
+description = 'A Python program for matrix structural analysis of skeletal structures.'
 readme = "README.md"
 requires-python = ">=3.7"
 license = "MIT"
