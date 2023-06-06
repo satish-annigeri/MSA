@@ -13,10 +13,6 @@ NDArrayFloat = npt.NDArray[np.float_]
 Matrix = npt.NDArray[np.float_]
 
 
-def atba(a, b):
-    return np.dot(np.dot(a.T, b), a)
-
-
 def array2df(x, columns=None, dtypes=None):
     df = pd.DataFrame(x, columns=columns)
     if dtypes:
@@ -110,9 +106,7 @@ def pf_calclen(xy1, xy2):
 def pf_get_endjts(imem, df_conn: pd.DataFrame):
     """Return numbers of first and second end of a plane frame member"""
     jt1, jt2 = df_conn.iloc[imem - 1, 0:2]
-    # jt2 = df_conn.iloc[imem - 1, 1]
     return jt1, jt2
-    # n1, n2 = df_conn.iloc[0, :2]
 
 
 # Utility function to get coordinates of end joints. Related to element
@@ -141,8 +135,8 @@ def pf_get_dof(imem, df_conn, lm):
     """Return degree of freedom numbers of the ends of a plane frame member"""
     jt1, jt2 = pf_get_endjts(imem, df_conn)
     memdof = np.array([0, 0, 0, 0, 0, 0])
-    memdof[0:3] = lm[jt1 - 1, :]  # type: ignore
-    memdof[3:6] = lm[jt2 - 1, :]  # type: ignore
+    memdof[0:3] = lm[jt1 - 1, :]
+    memdof[3:6] = lm[jt2 - 1, :]
     return memdof
 
 
@@ -155,7 +149,7 @@ def pf_gstiff(imem, df_xy, df_conn, df_mprop):
     E, A, Iz, L, dc = pf_get_memprop(imem, df_xy, df_conn, df_mprop)
     r = pf_calcrot(dc)
     k = pf_stiff(E, A, Iz, L)
-    return atba(r, k)
+    return r.T @ k @ r
 
 
 # Assemble structure stiffness matrix, contribution from one member. Related to structure
