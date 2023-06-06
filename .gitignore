@@ -72,3 +72,6 @@ ENV/
 
 # MkDocs documentation
 site*/
+
+# Sqlite3 db files
+*.sqlite3

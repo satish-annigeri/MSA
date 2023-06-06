@@ -109,9 +109,10 @@ def pf_calclen(xy1, xy2):
 # Utility function to get number of end joints. Related to element
 def pf_get_endjts(imem, df_conn: pd.DataFrame):
     """Return numbers of first and second end of a plane frame member"""
-    jt1 = df_conn.iloc[imem - 1, 0]
-    jt2 = df_conn.iloc[imem - 1, 1]
+    jt1, jt2 = df_conn.iloc[imem - 1, 0:2]
+    # jt2 = df_conn.iloc[imem - 1, 1]
     return jt1, jt2
+    # n1, n2 = df_conn.iloc[0, :2]
 
 
 # Utility function to get coordinates of end joints. Related to element
@@ -353,11 +354,14 @@ def data2df(
 
 def sqlite2df(dbfile: str):
     p = Path(dbfile)
-    print(p, p.exists())
     if not p.exists():
         raise FileNotFoundError
     try:
         con = sqlite3.connect(dbfile)
+
+        problem = pd.read_sql("SELECT * FROM problem", con)
+        title = str(problem.loc[0, "title"])
+
         xy = pd.read_sql("SELECT * FROM xy", con)
         xy.drop("id", axis=1, inplace=True)
 
@@ -376,7 +380,7 @@ def sqlite2df(dbfile: str):
         memloads = pd.read_sql("SELECT * FROM memloads", con)
         memloads.drop("id", axis=1, inplace=True)
 
-        return xy, conn, bc, mprop, jtloads, memloads
+        return title, xy, conn, bc, mprop, jtloads, memloads
     except Exception as e:
         raise e
 
@@ -405,11 +409,22 @@ def print_df(header: str, df: pd.DataFrame) -> None:
     print()
 
 
+def pf_check(xy, conn):
+    # Check connectivity
+    last_node = len(xy)
+    for imem in range(len(conn)):
+        n1, n2 = pf_get_endjts(imem, conn)
+        if (n1 > last_node) or (n2 > last_node):
+            raise ValueError
+
+
 # Main function
 if __name__ == "__main__":
-    # xy, conn, bc, mprop, jtloads, memloads = input_data()
-    title, xy, conn, bc, mprop, jtloads, memloads = read_toml("weaver.toml")
+    # title, xy, conn, bc, mprop, jtloads, memloads = read_toml("weaver.toml")
     # df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = data2df(xy, conn, bc, mprop, jtloads, memloads)
-    df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = sqlite2df("weaver.sqlite3")
+    # print_title(title)
+    # main(df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
+
+    title, df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = sqlite2df("weaver.sqlite3")
     print_title(title)
     main(df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
