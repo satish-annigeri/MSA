@@ -1,3 +1,8 @@
+"""Python package for analysis of skeletal structures using the direct stiffness method. The code is based
+on the theory and flowcharts in Weaver, W. and Gere, J.M., *Matrix Analysis of Framed Structures*,
+CBS Publishers, New Delhi, 1986. The package `pf` implements the analysis of plane frames.
+"""
+
 import sqlite3
 from pathlib import Path
 from typing import Any
@@ -22,8 +27,19 @@ def array2df(x, columns=None, dtypes=None):
 
 # Location Matrix. Related to structure
 def pf_calclm(n, df_bc: pd.DataFrame):
-    """
-    Calculate location matrix containing degree of freedom numbers of each node
+    """Calculate location matrix containing degree of freedom numbers of each node
+
+    Parameters
+    ----------
+    n : int
+        Number of nodes in the structure
+    df_bc : pd.DataFrame
+        Boundary condition for each degree of freedom of each node. 1 is restrained and 0 is unrestrained.
+
+    Returns
+    -------
+    tuple(NDArrayInt, int)
+
     """
     lm = np.zeros((n, 3), dtype=np.int_)
     nd = 0

@@ -2,9 +2,10 @@ site_name: MSA
 docs_dir: 'docs/src'
 nav:
     - Home: 'index.md'
+    - API Reference: 'api.md'
 
 theme:
-    name: mkdocs
+    name: material
     nav_style: dark
     locale: en
     highlightjs: true
