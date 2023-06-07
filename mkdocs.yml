@@ -1,0 +1,28 @@
+site_name: MSA
+docs_dir: 'docs/src'
+nav:
+    - Home: 'index.md'
+
+theme:
+    name: mkdocs
+    nav_style: dark
+    locale: en
+    highlightjs: true
+    hljs_languages:
+        - python
+
+markdown_extensions:
+    - toc:
+        permalink: true
+    - sane_lists: {}
+    - admonition: {}
+    - pymdownx.highlight:
+        use_pygments: true
+
+plugins:
+    - search: {}
+    - mkdocstrings:
+        default_handler: python
+
+watch:
+    - docs/src
