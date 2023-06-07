@@ -5,7 +5,7 @@ nav:
     - API Reference: 'api.md'
 
 theme:
-    name: material
+    name: readthedocs
     nav_style: dark
     locale: en
     highlightjs: true
@@ -15,8 +15,6 @@ theme:
 markdown_extensions:
     - toc:
         permalink: true
-    - sane_lists: {}
-    - admonition: {}
     - pymdownx.highlight:
         use_pygments: true
 
@@ -24,6 +22,11 @@ plugins:
     - search: {}
     - mkdocstrings:
         default_handler: python
+        handlers:
+            python:
+                options:
+                    docstring_style: numpy
 
 watch:
     - docs/src
+    - msa
