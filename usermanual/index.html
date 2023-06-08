@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>User Manual - MSA</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "User Manual";
+        var mkdocs_page_input_path = "usermanual.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> MSA
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">User Manual</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">API Reference</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">MSA</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li>User Manual</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="user-manual">User Manual<a class="headerlink" href="#user-manual" title="Permanent link">&para;</a></h1>
+<p>Data can be input to <code>pf.py</code> in one of the following ways:</p>
+<ol>
+<li>As data, mostly in the form of a series of <code>numpy.ndarray</code>s with specific variable names, in a Python script. This data must subsequntly converted into Pandas dataframes using <code>pf.data2df()</code> function.</li>
+<li>As Pandas DataFrames with specific variable names, column names and column <code>dtypes</code>. </li>
+<li>As a TOML file with specific names for variables</li>
+<li>As an sqlite3 database with specific names for tables and specific schema for each table</li>
+</ol>
+<p>Irrespective of how the data is input, the entire input data is finally represented in the form of Pandas DataFrames with the specified names, column names and data types.</p>
+<p>In the description below, <code>np.ndarray[(:, 2), np.float_]</code> implies a <code>numpy</code> array with as many rows as required (<code>:</code>) and all elements of type <code>np.float_</code>. As an example a coordinates of a 2 node structure could be defined as follows:</p>
+<pre><code class="language-python">xy = np.array([ [0, 0], [5, 0] ], dtype=np.float_)
+</code></pre>
+<p>which has 2 rows and elements are stored as floating point numbers.</p>
+<p>An empty matrix, such as when no nodal loads are applied on the structure should be resresented as:</p>
+<pre><code class="language-python">jtloads = np.array([], dtype=np.float_)
+</code></pre>
+<p>The names of variables and their column names and data types are as follows:</p>
+<ol>
+<li><code>title: str</code> is a string specifying a user defined title for the problem</li>
+<li><code>xy: np.ndarray[(:, 2), np.float_]</code> are the <code>(x, y)</code> coordinates of the nodes of the plane frame. Row index + 1 is the node number. In a Pandas DataFrame, the column names must be <code>x</code> and <code>y</code>. Data types of both columns must be <code>np.float_</code>.</li>
+<li><code>conn: np.ndarray[(:, 3), np.int_]</code> is the connectivity matrix for the members of the structure. Row index + 1 is the member number. Columns 1 and 2 represent the origin node <code>n1</code> and far node <code>n2</code> of the member and column 3 represents the material property id, to be defined later. In a Pandas DataFrame, the column names are <code>node1</code>, <code>node2</code>, <code>mprop</code>. All columns are of type <code>np.int_</code>.</li>
+<li><code>bc: np.ndarray[(:, 4), np.int_]</code> is the zero boundary condition matrix specifying the support conditions. Row index + 1 is the support constraint for a constrained node. Column 1 specifies the node id to which the constraints are to be applied. Columns 2, 3 and 4 represent the constraints to be applied to the <code>ux</code>, <code>uy</code> and <code>rz</code> degrees of freedom of the node, where <code>ux</code> and <code>uy</code> are linear displacements along the global <code>x</code> and <code>y</code> axes and <code>rz</code> is the rotatiion about the global <code>z</code> axis. Constraint code <code>1</code> implies the corresponding degree of freedom is constrained (zero displacement) and <code>1</code> implies the corresponding degree of freedom is unconstrained (non-zero unknown displacement that needs to be determined). For example, if node number 1 is a fixed support, it would be represented by the row <code>2 1 1 1</code> and if node number 3 is a hinged support, it would be repesented as <code>3 1 1 0</code>. Constraints for a node need be specified only when one or more of its degrees of freedom are constrained. Remaining nodes are considered unconstrained.</li>
+<li><code>mprop: np.ndarray[(:, 3), np.float_]</code> is a matrix representing each unique material property. Row index + 1 is the material number. Column 1 repesents the modulus of elasticity <code>E</code>, column 2 repesents the cross-section area <code>A</code> and column 3 repesents the second moment of area about the axis of bending <code>Iz</code>. In a Pandas DataFrame, the column names should be <code>E</code>, <code>A</code> and <code>Iz</code>. All columns are of type <code>np.float_</code>. When multiple members have the same material properties, it need be defined only once and the material property id must be indicated in the connectivity matrix <code>conn</code> defined above.</li>
+<li><code>jtloads: np.ndarray[(:, 4), np.float]</code> is the nodal load matrix. Row index + 1 is the nodal load number. Column 1 represents the number of the node to which the nodal load must be assigned. Columns 2 and 3 repesent the magnitudes of the <code>x</code> and <code>y</code> components of the load applied at the node and column 3 repesents the moment applied about the <code>z</code> axis at the specified node. Each nodal load must be defined independently, even when it may be identical to another load applied on a different node. In a Pandas DataFrame, the columns names must be <code>node</code>, <code>Px</code>, <code>Py</code>, <code>Mz</code>. Data type of the first column must be <code>np.int_</code> and columns 2 to 4 must be <code>np.float_</code>. When defining joint loads as a <code>numpy</code> array, all columns are defined as <code>np.float_</code> and the function <code>pf.data2df()</code> will automatically ensure the proper column names and data types. <strong>Note:</strong> If no nodal loads are applied on any of the nodes of the structure, it must be defined as an empty array or DataFrame.</li>
+<li><code>memloads: np.ndarray[(:, 7), np.float_]</code> is the member load matrix. Row index + 1 is the member load number. Column 1 represents the number of the member to which the nodal load must be assigned. Columns 2, 3, 4 repesent the magnitudes of the loads applied at the origin node of the member and columns 5, 6, 7 represent the loads applied at the far node of the member. Loads at each node follow the sequence <code>Px</code>, <code>Py</code>, <code>Mz</code>. Each member load must be defined independently, even when it may be identical to another load applied on a different member. In a Pandas DataFrame, the columns names must be <code>member</code>, <code>Px1</code>, <code>Py1</code>, <code>Mz1</code>, <code>Px2</code>, <code>Py2</code>, <code>Mz2</code>. Data type of the first column must be <code>np.int_</code> and columns 2 to 7 must be <code>np.float_</code>. When defining member loads as a <code>numpy</code> array, all columns are defined as <code>np.float_</code> and the function <code>pf.data2df()</code> will automatically ensure the proper column names and data types. Member loads must be computed as the negative of the fixed end reactions produced in the member when subjected to the specified loads (may be one or more). These must be computed by the user and the program at present does not calculate these automatically for the common types of loads noramlly encountered in practice. <strong>Note:</strong> If no loads are applied on any of the nodes of the structure, it must be defined as an empty array or DataFrame.</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../api/" class="btn btn-neutral float-right" title="API Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../api/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
