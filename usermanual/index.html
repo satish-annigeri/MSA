@@ -119,7 +119,7 @@
               
                 <h1 id="user-manual">User Manual<a class="headerlink" href="#user-manual" title="Permanent link">&para;</a></h1>
 <h2 id="units">Units<a class="headerlink" href="#units" title="Permanent link">&para;</a></h2>
-<p>Data input can be in any set of consistent units. Thus, if lengths are in $m$, then cross-section area <strong>must</strong> be in $m^2$. Similarly,, if forces are in $kN$, then $E$ must be in $kN/m^2$.</p>
+<p>Data input can be in any set of consistent units. Thus, if lengths are in <span class="arithmatex">\(m\)</span>, then cross-section area <strong>must</strong> be in <span class="arithmatex">\(m^2\)</span>. Similarly,, if forces are in <span class="arithmatex">\(kN\)</span>, then <span class="arithmatex">\(E\)</span> must be in <span class="arithmatex">\(kN/m^2\)</span>.</p>
 <h2 id="input-formats">Input Formats<a class="headerlink" href="#input-formats" title="Permanent link">&para;</a></h2>
 <p>Data can be input to <code>pf.py</code> in one of the following ways:</p>
 <ol>
@@ -150,25 +150,25 @@
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p><img alt="Example problem from Weaver and Gere, pp. 243" src="../img/weaver.jpg" title="Weaver and Gere, pp. 243" /></p>
 <h3 id="units_1">Units<a class="headerlink" href="#units_1" title="Permanent link">&para;</a></h3>
-<p>Lengths are in inches and forces are in kips. Therefore, area must be in $\text{in}^2$, $I_z$ must be in $\text{in}^4 and $E$ in $\text{kips}/\text{in}^2$$.</p>
+<p>Lengths are in inches and forces are in kips. Therefore, area must be in <span class="arithmatex">\(\text{in}^2\)</span>, <span class="arithmatex">\(I_z\)</span> must be in <span class="arithmatex">\(\text{in}^4\)</span> and <span class="arithmatex">\(E\)</span> in <span class="arithmatex">\(\text{kips}/\text{in}^2\)</span>.</p>
 <h3 id="coordinate-axes">Coordinate Axes<a class="headerlink" href="#coordinate-axes" title="Permanent link">&para;</a></h3>
-<p>Let the global $x$ axis be horizontal and passing through node 3 and $y$axis be vertical and passing through node 1. Then, the global $z$ axis will be perpendicular to the plane of the frame and pointing toward the observer.</p>
-<p>Each member has a member axis, with the member $x$ axis has its origin at the origin node of the member and is positive towards the far node of the member. The member $y$ axis is such that the member $z$ axis must point in the same direction as the global $z$ axis. Thus, considering a horizontal member (that is, member parallel to the global $x$ axis) with its left end as the origin node, member $y$ axis must point upwards, so the member $z$ axis is parallel to the global $z$ axis. However, for the same member, if the right node is considered the origin node, the member $y$ axis, at the right node, must point downward to ensure that the member $z$ axis points towards the observer (as per the right hand rule). This applie even when the member is </p>
+<p>Let the global <span class="arithmatex">\(x\)</span> axis be horizontal and passing through node 3 and <span class="arithmatex">\(y\)</span>axis be vertical and passing through node 1. Then, the global <span class="arithmatex">\(z\)</span> axis will be perpendicular to the plane of the frame and pointing toward the observer.</p>
+<p>Each member has a member axis, with the member <span class="arithmatex">\(x\)</span> axis has its origin at the origin node of the member and is positive towards the far node of the member. The member <span class="arithmatex">\(y\)</span> axis is such that the member <span class="arithmatex">\(z\)</span> axis must point in the same direction as the global <span class="arithmatex">\(z\)</span> axis. Thus, considering a horizontal member (that is, member parallel to the global <span class="arithmatex">\(x\)</span> axis) with its left end as the origin node, member <span class="arithmatex">\(y\)</span> axis must point upwards, so the member <span class="arithmatex">\(z\)</span> axis is parallel to the global <span class="arithmatex">\(z\)</span> axis. However, for the same member, if the right node is considered the origin node, the member <span class="arithmatex">\(y\)</span> axis, at the right node, must point downward to ensure that the member <span class="arithmatex">\(z\)</span> axis points towards the observer (as per the right hand rule). This applie even when the member is </p>
 <p>It is important to understand the orientations of the global and member axes as they are required when computing nodal loads and member end actions due to loads applied on the members.</p>
 <h3 id="member-end-actions">Member End Actions<a class="headerlink" href="#member-end-actions" title="Permanent link">&para;</a></h3>
-<p>$P=10~\text{kips}, L=100~\text{in}, E=10000~\text{ksi}, A = 10~\text{in}^2, I_z = 1000~ \text{in}^4$</p>
+<p><span class="arithmatex">\(P=10~\text{kips}, L=100~\text{in}, E=10000~\text{ksi}, A = 10~\text{in}^2, I_z = 1000~ \text{in}^4\)</span></p>
 <h3 id="member-end-force-calculation">Member end force calculation<a class="headerlink" href="#member-end-force-calculation" title="Permanent link">&para;</a></h3>
 <h4 id="member-1">Member 1<a class="headerlink" href="#member-1" title="Permanent link">&para;</a></h4>
-<p>$M_1 = -M_2 = \frac{0.24 \times 100^2}{12} = 200~\text{kips-in}$</p>
-<p>$R_1 = R_2 = \frac{0.24 \times 100}{2} = 12~\text{kips}$</p>
+<p><span class="arithmatex">\(M_1 = -M_2 = \frac{0.24 \times 100^2}{12} = 200~\text{kips-in}\)</span></p>
+<p><span class="arithmatex">\(R_1 = R_2 = \frac{0.24 \times 100}{2} = 12~\text{kips}\)</span></p>
 <h4 id="member-2">Member 2<a class="headerlink" href="#member-2" title="Permanent link">&para;</a></h4>
 <p>In global axes, the reactions are:</p>
-<p>$M_1 = -M_2 = \frac{20 \times 100}{8} = 250~\text{kips-in}$</p>
-<p>$R_1 = R_2 = \frac{20}{2} = 10~\text{kips}$</p>
-<p>Origin node is the left node, $x$ axis goes from origin node to the far node and $y$ axis is upwards so as to maintain the $z$ axis perpendicular to the paper and coming out towards the reader, same as the global $z$ axis.</p>
+<p><span class="arithmatex">\(M_1 = -M_2 = \frac{20 \times 100}{8} = 250~\text{kips-in}\)</span></p>
+<p><span class="arithmatex">\(R_1 = R_2 = \frac{20}{2} = 10~\text{kips}\)</span></p>
+<p>Origin node is the left node, <span class="arithmatex">\(x\)</span> axis goes from origin node to the far node and <span class="arithmatex">\(y\)</span> axis is upwards so as to maintain the <span class="arithmatex">\(z\)</span> axis perpendicular to the paper and coming out towards the reader, same as the global <span class="arithmatex">\(z\)</span> axis.</p>
 <p>Resolving the reactions along the member axes, we get:
-$\theta = \tan^{-1} \left( \frac{75}{100} \right) = 36.8699~\text{degrees}, \cos \theta = 0.8, \sin \theta = 0.6$.</p>
-<p>$R_{x1} = R_{x2} = -6~\text{kN}, R_{y1} = R_{y2} = 8~\text{kN}$</p>
+<span class="arithmatex">\(\theta = \tan^{-1} \left( \frac{75}{100} \right) = 36.8699~\text{degrees}, \cos \theta = 0.8, \sin \theta = 0.6\)</span>.</p>
+<p><span class="arithmatex">\(R_{x1} = R_{x2} = -6~\text{kN}, R_{y1} = R_{y2} = 8~\text{kN}\)</span></p>
 <p><strong>Note:</strong> Ideally, all such calculations must be performed by the program and not the user, but that is a goal for the future.</p>
 <h3 id="node-cooridinates">Node Cooridinates<a class="headerlink" href="#node-cooridinates" title="Permanent link">&para;</a></h3>
 <p>Name of the variable: <code>xy</code>. Pandas column names: <code>x</code>, <code>y</code>. Data types of both columns: <code>np-float_</code>.</p>
@@ -220,10 +220,10 @@ $\theta = \tan^{-1} \left( \frac{75}{100} \right) = 36.8699~\text{degrees}, \cos
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> Origin node of member 1 is defined as node 2 and far node as node 1, Therefore, the member $x$ axis is parallel to the global $x$ axis and points in the same direction. Similarly, member $x$ axis of member 2 has its origin at node 1 and is inclined to the global $x$ axis at an angle $\theta = 36.8699$ degrees and pointing downwards.</p>
+<p><strong>Note:</strong> Origin node of member 1 is defined as node 2 and far node as node 1, Therefore, the member <span class="arithmatex">\(x\)</span> axis is parallel to the global <span class="arithmatex">\(x\)</span> axis and points in the same direction. Similarly, member <span class="arithmatex">\(x\)</span> axis of member 2 has its origin at node 1 and is inclined to the global <span class="arithmatex">\(x\)</span> axis at an angle <span class="arithmatex">\(\theta = 36.8699\)</span> degrees and pointing downwards.</p>
 <h3 id="boundary-conditions">Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permanent link">&para;</a></h3>
 <p>Name of the variable: <code>bc</code>. Pandas column nmaes: <code>node</code>, <code>ux</code>, <code>uy</code>, <code>rz</code>. Data types of all columns: <code>np.int_</code>.</p>
-<p>Supports at both the nodes 2 and 3 are fixed. Thus all displacements, $u_x, u_y, r_z$ are restrained.</p>
+<p>Supports at both the nodes 2 and 3 are fixed. Thus all displacements, <span class="arithmatex">\(u_x, u_y, r_z\)</span> are restrained.</p>
 <table>
 <thead>
 <tr>
@@ -287,7 +287,7 @@ $\theta = \tan^{-1} \left( \frac{75}{100} \right) = 36.8699~\text{degrees}, \cos
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> Sign convention for nodal loads is as per the global axes. Thus, $P_x, P_y$ are positive if they have the same sign as the global $x$ and $y$ axes, respectively. Sign of $M_z$ is as per the right hand rule. If direction of $M_z$ is the same as the direction of the fingers of the right hand when holding the global $z$ axis with the right hand with the thumb pointing in the same directioin as the global $z$ axis.</p>
+<p><strong>Note:</strong> Sign convention for nodal loads is as per the global axes. Thus, <span class="arithmatex">\(P_x, P_y\)</span> are positive if they have the same sign as the global <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> axes, respectively. Sign of <span class="arithmatex">\(M_z\)</span> is as per the right hand rule. If direction of <span class="arithmatex">\(M_z\)</span> is the same as the direction of the fingers of the right hand when holding the global <span class="arithmatex">\(z\)</span> axis with the right hand with the thumb pointing in the same directioin as the global <span class="arithmatex">\(z\)</span> axis.</p>
 <h3 id="member-end-actions_1">Member End Actions<a class="headerlink" href="#member-end-actions_1" title="Permanent link">&para;</a></h3>
 <p>Name of variable: <code>memloads</code>. Pandas column names: <code>member</code>, <code>Px1</code>, <code>Py1</code>, <code>Mz1</code>, <code>Px2</code>, <code>Py2</code>, <code>Mz2</code>. Data types of columns: <code>np.int_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>.</p>
 <table>
@@ -402,6 +402,9 @@ if __name__ == &quot;__main__&quot;:
     <script>var base_url = '..';</script>
     <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
+      <script src="../javascripts/mathjax.js" defer></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
       <script src="../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
