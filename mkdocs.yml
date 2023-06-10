@@ -20,6 +20,10 @@ markdown_extensions:
         use_pygments: true
     - pymdownx.arithmatex:
         generic: true
+    - pymdownx.betterem
+    - pymdownx.caret
+    - pymdownx.mark
+    - pymdownx.tilde
 
 plugins:
     - search: {}
