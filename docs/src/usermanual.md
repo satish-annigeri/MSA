@@ -114,7 +114,7 @@ Both members of this structure have the same material property and therefore we 
 |-----:|------:|-------:|
 | 10000|     10|    1000|
 
-## Nodal Loads
+### Nodal Loads
 Name of variable: `jtloads`. Pandas column names: `node`, `Px`, `Py`, `Mz`. Data type of columns: `np.int_`, `np.float_`, `np.float_`, `np.float_`.
 
 |`node` | `Px` | `Py` | `Mz` |
@@ -123,7 +123,7 @@ Name of variable: `jtloads`. Pandas column names: `node`, `Px`, `Py`, `Mz`. Data
 
 **Note:** Sign convention for nodal loads is as per the global axes. Thus, $P_x, P_y$ are positive if they have the same sign as the global $x$ and $y$ axes, respectively. Sign of $M_z$ is as per the right hand rule. If direction of $M_z$ is the same as the direction of the fingers of the right hand when holding the global $z$ axis with the right hand with the thumb pointing in the same directioin as the global $z$ axis.
 
-## Member End Actions
+### Member End Actions
 Name of variable: `memloads`. Pandas column names: `member`, `Px1`, `Py1`, `Mz1`, `Px2`, `Py2`, `Mz2`. Data types of columns: `np.int_`, `np.float_`, `np.float_`, `np.float_`, `np.float_`, `np.float_`, `np.float_`.
 
 | `member` |  `Px1`  |  `Py1`  |  `Mz1`  |  `Px2`  |  `Py2`  |  `Mz2`  |
@@ -131,3 +131,41 @@ Name of variable: `memloads`. Pandas column names: `member`, `Px1`, `Py1`, `Mz1`
 |   1      |  0  |  12  |  200 |  0  |  12 | -200  |
 |   2      | -6  |   8  |  250 | -6  |   8 | -250  |
 
+
+## Sample Python Script to Use `msa.pf`
+```python
+import numpy as np
+
+from msa import pf
+
+
+def input_data(prob: str):
+    # Weaver & Gere
+    title = "Plane Frame (Weaver and Gere)"
+    xy = np.array([[100.0, 75.0], [0.0, 75.0], [200.0, 0.0]])
+    conn = np.array([[2, 1, 1], [1, 3, 1]], dtype=np.int_)
+    bc = np.array([[2, 1, 1, 1], [3, 1, 1, 1]], dtype=np.int_)
+    mprop = np.array([[1.0e4, 10, 1.0e3]], dtype=np.float_)
+    jtloads = np.array([[1, 0, -10.0, -1000.0]], dtype=np.float_)
+    memloads = np.array(
+        [[1, 0.0, 12.0, 200.0, 0.0, 12.0, -200.0], [2, -6.0, 8.0, 250.0, -6.0, 8.0, -250.0]], dtype=np.float_
+    )
+    return title, xy, conn, bc, mprop, jtloads, memloads
+
+
+def echo_input(title, xy, conn, bc, mprop):
+    pf.print_title(title)
+    pf.print_mat("\nJoint Coordinates\n", xy)
+    pf.print_mat("\nMember Connectivity\n", conn)
+    pf.print_mat("\nZero Boundary Conditions\n", bc)
+    pf.print_mat("\nMember Properties\n", mprop)
+
+
+if __name__ == "__main__":
+    title, xy, conn, bc, mprop, jtloads, memloads = input_data("weaver")
+    pf.echo_input(title, xy, conn, bc, mprop)
+    df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = pf.data2df(
+        xy, conn, bc, mprop, jtloads, memloads
+    )
+    pf.main(df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
+```
