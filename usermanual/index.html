@@ -79,11 +79,13 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#material-properties">Material Properties</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodal-loads">Nodal Loads</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#member-end-actions_1">Member End Actions</a>
+    </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#nodal-loads">Nodal Loads</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#member-end-actions_1">Member End Actions</a>
+    <li class="toctree-l2"><a class="reference internal" href="#sample-python-script-to-use-msapf">Sample Python Script to Use msa.pf</a>
     </li>
     </ul>
                 </li>
@@ -265,7 +267,7 @@ $\theta = \tan^{-1} \left( \frac{75}{100} \right) = 36.8699~\text{degrees}, \cos
 </tr>
 </tbody>
 </table>
-<h2 id="nodal-loads">Nodal Loads<a class="headerlink" href="#nodal-loads" title="Permanent link">&para;</a></h2>
+<h3 id="nodal-loads">Nodal Loads<a class="headerlink" href="#nodal-loads" title="Permanent link">&para;</a></h3>
 <p>Name of variable: <code>jtloads</code>. Pandas column names: <code>node</code>, <code>Px</code>, <code>Py</code>, <code>Mz</code>. Data type of columns: <code>np.int_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>.</p>
 <table>
 <thead>
@@ -286,7 +288,7 @@ $\theta = \tan^{-1} \left( \frac{75}{100} \right) = 36.8699~\text{degrees}, \cos
 </tbody>
 </table>
 <p><strong>Note:</strong> Sign convention for nodal loads is as per the global axes. Thus, $P_x, P_y$ are positive if they have the same sign as the global $x$ and $y$ axes, respectively. Sign of $M_z$ is as per the right hand rule. If direction of $M_z$ is the same as the direction of the fingers of the right hand when holding the global $z$ axis with the right hand with the thumb pointing in the same directioin as the global $z$ axis.</p>
-<h2 id="member-end-actions_1">Member End Actions<a class="headerlink" href="#member-end-actions_1" title="Permanent link">&para;</a></h2>
+<h3 id="member-end-actions_1">Member End Actions<a class="headerlink" href="#member-end-actions_1" title="Permanent link">&para;</a></h3>
 <p>Name of variable: <code>memloads</code>. Pandas column names: <code>member</code>, <code>Px1</code>, <code>Py1</code>, <code>Mz1</code>, <code>Px2</code>, <code>Py2</code>, <code>Mz2</code>. Data types of columns: <code>np.int_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>.</p>
 <table>
 <thead>
@@ -321,6 +323,47 @@ $\theta = \tan^{-1} \left( \frac{75}{100} \right) = 36.8699~\text{degrees}, \cos
 </tr>
 </tbody>
 </table>
+<h2 id="sample-python-script-to-use-msapf">Sample Python Script to Use <code>msa.pf</code><a class="headerlink" href="#sample-python-script-to-use-msapf" title="Permanent link">&para;</a></h2>
+<pre><code class="language-python">#  example01.py
+
+import numpy as np
+
+from msa import pf
+
+
+def input_data(prob: str):
+    # Weaver &amp; Gere
+    title = &quot;Plane Frame (Weaver and Gere)&quot;
+    xy = np.array([[100.0, 75.0], [0.0, 75.0], [200.0, 0.0]])
+    conn = np.array([[2, 1, 1], [1, 3, 1]], dtype=np.int_)
+    bc = np.array([[2, 1, 1, 1], [3, 1, 1, 1]], dtype=np.int_)
+    mprop = np.array([[1.0e4, 10, 1.0e3]], dtype=np.float_)
+    jtloads = np.array([[1, 0, -10.0, -1000.0]], dtype=np.float_)
+    memloads = np.array(
+        [[1, 0.0, 12.0, 200.0, 0.0, 12.0, -200.0], [2, -6.0, 8.0, 250.0, -6.0, 8.0, -250.0]], dtype=np.float_
+    )
+    return title, xy, conn, bc, mprop, jtloads, memloads
+
+
+def echo_input(title, xy, conn, bc, mprop):
+    pf.print_title(title)
+    pf.print_mat(&quot;\nJoint Coordinates\n&quot;, xy)
+    pf.print_mat(&quot;\nMember Connectivity\n&quot;, conn)
+    pf.print_mat(&quot;\nZero Boundary Conditions\n&quot;, bc)
+    pf.print_mat(&quot;\nMember Properties\n&quot;, mprop)
+
+
+if __name__ == &quot;__main__&quot;:
+    title, xy, conn, bc, mprop, jtloads, memloads = input_data()
+    pf.echo_input(title, xy, conn, bc, mprop)
+    df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = pf.data2df(
+        xy, conn, bc, mprop, jtloads, memloads
+    )
+    pf.main(df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
+</code></pre>
+<p>Execute the above script with:</p>
+<pre><code class="language-console">&gt;python example01.py
+</code></pre>
               
             </div>
           </div><footer>
