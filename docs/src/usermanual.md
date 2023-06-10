@@ -39,7 +39,7 @@ The names of variables and their column names and data types are as follows:
 ![Example problem from Weaver and Gere, pp. 243](./img/weaver.jpg "Weaver and Gere, pp. 243")
 
 ### Units
-Lengths are in inches and forces are in kips. Therefore, area must be in $\text{in}^2$, $I_z$ must be in $\text{in}^4 and $E$ in $\text{kips}/\text{in}^2$$.
+Lengths are in inches and forces are in kips. Therefore, area must be in $\text{in}^2$, $I_z$ must be in $\text{in}^4$ and $E$ in $\text{kips}/\text{in}^2$.
 
 ### Coordinate Axes
 Let the global $x$ axis be horizontal and passing through node 3 and $y$axis be vertical and passing through node 1. Then, the global $z$ axis will be perpendicular to the plane of the frame and pointing toward the observer.
