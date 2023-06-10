@@ -51,7 +51,6 @@ def echo_input(title, xy, conn, bc, mprop):
 
 if __name__ == "__main__":
     title, xy, conn, bc, mprop, jtloads, memloads = input_data("weaver")
-    # pf.print_title(title)
     df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = pf.data2df(xy, conn, bc, mprop, jtloads, memloads)
     echo_input(title, df_xy, df_conn, df_bc, df_mprop)
     pf.main(df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
@@ -59,7 +58,6 @@ if __name__ == "__main__":
     print(f"\n{'='*90}\n")
 
     title, xy, conn, bc, mprop, jtloads, memloads = input_data("hall")
-    # pf.print_title(title)
     df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = pf.data2df(xy, conn, bc, mprop, jtloads, memloads)
     echo_input(title, df_xy, df_conn, df_bc, df_mprop)
     pf.main(df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
