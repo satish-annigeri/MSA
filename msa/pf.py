@@ -423,7 +423,7 @@ def pf_assem_loadvec_ml(iload, df_xy, df_conn, lm, df_memloads, P):
     r = pf_calcrot(dc)
     ml = df_memloads.iloc[iload - 1, 1:7]
     # ml = ml.reshape(len(ml), 1)
-    ml = ml.values
+    # ml = ml.values
     am = np.dot(-r.T, ml)
     memdof = pf_get_dof(imem, df_conn, lm)
     for i in range(6):
