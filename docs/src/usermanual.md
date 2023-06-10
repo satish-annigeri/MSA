@@ -134,6 +134,8 @@ Name of variable: `memloads`. Pandas column names: `member`, `Px1`, `Py1`, `Mz1`
 
 ## Sample Python Script to Use `msa.pf`
 ```python
+#  example01.py
+
 import numpy as np
 
 from msa import pf
@@ -162,10 +164,15 @@ def echo_input(title, xy, conn, bc, mprop):
 
 
 if __name__ == "__main__":
-    title, xy, conn, bc, mprop, jtloads, memloads = input_data("weaver")
+    title, xy, conn, bc, mprop, jtloads, memloads = input_data()
     pf.echo_input(title, xy, conn, bc, mprop)
     df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads = pf.data2df(
         xy, conn, bc, mprop, jtloads, memloads
     )
     pf.main(df_xy, df_conn, df_bc, df_mprop, df_jtloads, df_memloads)
+```
+
+Execute the above script with:
+```console
+>python example01.py
 ```
