@@ -8,6 +8,9 @@ Python package for the direct stiffness method of matrix analysis of skeletal st
 1. Weaver, W. and Gere, J.M., *Matrix Analysis of Framed Structures*, 2ed., CBS Publishers, New Delhi, 1986
 2. Hall, A. and Kabaila, A.P., *Basic Concepts of Structural Analysis*, Pitman Publishing, London, 1977
 
+## Documentation
+Documentation is available [here](https://satish-annigeri.github.io/MSA/).
+
 ## Install
 
 ### Clone Source from github
