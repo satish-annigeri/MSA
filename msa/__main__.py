@@ -43,10 +43,10 @@ def input_data(prob: str):
 
 def echo_input(title, xy, conn, bc, mprop):
     print(f"{title}\n{'-'*len(title)}")
-    print("\nJoint Coordinates\n", xy)
-    print("\nMember Connectivity\n", conn)
-    print("\nZero Boundary Conditions\n", bc)
-    print("\nMember Properties\n", mprop)
+    print(f"\nJoint Coordinates\n{xy.to_string(index=False)}")
+    print(f"\nMember Connectivity\n{conn.to_string(index=False)}")
+    print(f"\nZero Boundary Conditions\n{bc.to_string(index=False)}")
+    print(f"\nMember Properties\n{mprop.to_string(index=False)}")
 
 
 if __name__ == "__main__":
