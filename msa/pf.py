@@ -424,7 +424,8 @@ def pf_assem_loadvec_ml(iload, df_xy, df_conn, lm, df_memloads, P):
     ml = df_memloads.iloc[iload - 1, 1:7]
     # ml = ml.reshape(len(ml), 1)
     # ml = ml.values
-    am = np.dot(-r.T, ml)
+    # am = np.dot(-r.T, ml)
+    am = -r.T @ ml
     memdof = pf_get_dof(imem, df_conn, lm)
     for i in range(6):
         if memdof[i]:
@@ -502,10 +503,12 @@ def pf_mem_endforces(imem, df_xy, df_conn, df_mprop, df_memloads, lm, x):
         if memdof[i]:
             idof = memdof[i]
             u[i] = x[idof - 1]
-    uu = np.dot(r, u)
+    # uu = np.dot(r, u)
+    uu = r @ u
     k = pf_stiff(E, A, Iz, L)
     f = np.zeros((6, 1), dtype=float)
-    f = np.dot(k, uu)
+    f = k @ uu
+    # f = np.dot(k, uu)
 
     nml = len(df_memloads)
     for i in range(nml):
