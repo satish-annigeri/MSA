@@ -14,8 +14,8 @@ import tomllib
 from scipy.linalg import solve
 
 NDArrayInt = npt.NDArray[np.int_]
-NDArrayFloat = npt.NDArray[np.float_]
-Matrix = npt.NDArray[np.float_]
+NDArrayFloat = npt.NDArray[np.float64]
+Matrix = npt.NDArray[np.float64]
 
 
 def array2df(x, columns=None, dtypes=None):
@@ -561,12 +561,12 @@ def read_toml(fname: str):
         s = f.read()
     data = tomllib.loads(s)
     title = data["title"]
-    xy = np.array(data["coordinates"]["xy"], dtype=np.float_)
+    xy = np.array(data["coordinates"]["xy"], dtype=np.float64)
     conn = np.array(data["connectivity"]["conn"], dtype=np.int_)
     bc = np.array(data["boundary"]["bc"], dtype=np.int_)
-    mprop = np.array(data["materials"]["mprop"], dtype=np.float_)
-    jtloads = np.array(data["jointloads"]["jtloads"], dtype=np.float_)
-    memloads = np.array(data["memberloads"]["memloads"], dtype=np.float_)
+    mprop = np.array(data["materials"]["mprop"], dtype=np.float64)
+    jtloads = np.array(data["jointloads"]["jtloads"], dtype=np.float64)
+    memloads = np.array(data["memberloads"]["memloads"], dtype=np.float64)
     return title, xy, conn, bc, mprop, jtloads, memloads
 
 
@@ -579,13 +579,13 @@ def data2df(
     memloads: NDArrayFloat,
 ):  # , conn, bc, mprop, jtloads, memloads
     df_xy = pd.DataFrame(xy, columns=["x", "y"])
-    df_xy = df_xy.astype(np.float_)
+    df_xy = df_xy.astype(np.float64)
     df_conn = pd.DataFrame(conn, columns=["node1", "node2", "mprop"])
     df_conn = df_conn.astype(int)
     df_bc = pd.DataFrame(bc, columns=["node", "ux", "uy", "rz"])
     df_bc = df_bc.astype(np.int_)
     df_mprop = pd.DataFrame(mprop, columns=["E", "A", "Iz"])
-    df_mprop = df_mprop.astype(np.float_)
+    df_mprop = df_mprop.astype(np.float64)
     if len(jtloads) > 0:
         df_jtloads = pd.DataFrame(jtloads, columns=["node", "Px", "Py", "Mz"])
         df_jtloads = df_jtloads.astype({"node": np.int_})
@@ -634,7 +634,7 @@ def sqlite2df(dbfile: str):
 
 # Utility functions. Not directly related to DSM
 def print_title(title: str):
-    print(f"{title}\n{'-'*len(title)}")
+    print(f"{title}\n{'-' * len(title)}")
 
 
 def print_mat(header: str, k: npt.NDArray[Any]) -> None:
@@ -657,7 +657,7 @@ def print_mat(header: str, k: npt.NDArray[Any]) -> None:
 
 
 def print_df(header: str, df: pd.DataFrame) -> None:
-    print(f"{header}\n{'='*len(header)}")
+    print(f"{header}\n{'=' * len(header)}")
     print(df.to_string(index=False))
     print()
 
