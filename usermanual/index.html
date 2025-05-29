@@ -8,7 +8,7 @@
     <title>User Manual - MSA</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
         <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
     
       <script>
@@ -18,13 +18,12 @@
         var mkdocs_page_url = null;
       </script>
     
-    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -46,8 +45,12 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">User Manual</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">User Manual</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#units">Units</a>
     </li>
@@ -107,8 +110,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-      <li>User Manual</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">User Manual</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -129,23 +132,23 @@
 <li>As an sqlite3 database with specific names for tables and specific schema for each table</li>
 </ol>
 <p>Irrespective of how the data is input, the entire input data is finally represented in the form of Pandas DataFrames with the specified names, column names and data types.</p>
-<p>In the description below, <code>np.ndarray[(:, 2), np.float_]</code> implies a <code>numpy</code> array with as many rows as required (<code>:</code>) and all elements of type <code>np.float_</code>. As an example a coordinates of a 2 node structure could be defined as follows:</p>
-<pre><code class="language-python">xy = np.array([ [0, 0], [5, 0] ], dtype=np.float_)
+<p>In the description below, <code>np.ndarray[(:, 2), np.float64]</code> implies a <code>numpy</code> array with as many rows as required (<code>:</code>) and all elements of type <code>np.float64</code>. As an example a coordinates of a 2 node structure could be defined as follows:</p>
+<pre><code class="language-python">xy = np.array([ [0, 0], [5, 0] ], dtype=np.float64)
 </code></pre>
 <p>which has 2 rows and elements are stored as floating point numbers.</p>
 <p>An empty matrix, such as when no nodal loads are applied on the structure should be resresented as:</p>
-<pre><code class="language-python">jtloads = np.array([], dtype=np.float_)
+<pre><code class="language-python">jtloads = np.array([], dtype=np.float64)
 </code></pre>
 <h2 id="input-data">Input Data<a class="headerlink" href="#input-data" title="Permanent link">&para;</a></h2>
 <p>The names of variables and their column names and data types are as follows:</p>
 <ol>
 <li><code>title: str</code> is a string specifying a user defined title for the problem</li>
-<li><code>xy: np.ndarray[(:, 2), np.float_]</code> are the <code>(x, y)</code> coordinates of the nodes of the plane frame. Row index + 1 is the node number. In a Pandas DataFrame, the column names must be <code>x</code> and <code>y</code>. Data types of both columns must be <code>np.float_</code>.</li>
+<li><code>xy: np.ndarray[(:, 2), np.float64]</code> are the <code>(x, y)</code> coordinates of the nodes of the plane frame. Row index + 1 is the node number. In a Pandas DataFrame, the column names must be <code>x</code> and <code>y</code>. Data types of both columns must be <code>np.float64</code>.</li>
 <li><code>conn: np.ndarray[(:, 3), np.int_]</code> is the connectivity matrix for the members of the structure. Row index + 1 is the member number. Columns 1 and 2 represent the origin node <code>n1</code> and far node <code>n2</code> of the member and column 3 represents the material property id, to be defined later. In a Pandas DataFrame, the column names are <code>node1</code>, <code>node2</code>, <code>mprop</code>. All columns are of type <code>np.int_</code>.</li>
 <li><code>bc: np.ndarray[(:, 4), np.int_]</code> is the zero boundary condition matrix specifying the support conditions. Row index + 1 is the support constraint for a constrained node. Column 1 specifies the node id to which the constraints are to be applied. Columns 2, 3 and 4 represent the constraints to be applied to the <code>ux</code>, <code>uy</code> and <code>rz</code> degrees of freedom of the node, where <code>ux</code> and <code>uy</code> are linear displacements along the global <code>x</code> and <code>y</code> axes and <code>rz</code> is the rotatiion about the global <code>z</code> axis. Constraint code <code>1</code> implies the corresponding degree of freedom is constrained (zero displacement) and <code>1</code> implies the corresponding degree of freedom is unconstrained (non-zero unknown displacement that needs to be determined). For example, if node number 1 is a fixed support, it would be represented by the row <code>2 1 1 1</code> and if node number 3 is a hinged support, it would be repesented as <code>3 1 1 0</code>. Constraints for a node need be specified only when one or more of its degrees of freedom are constrained. Remaining nodes are considered unconstrained.</li>
-<li><code>mprop: np.ndarray[(:, 3), np.float_]</code> is a matrix representing each unique material property. Row index + 1 is the material number. Column 1 repesents the modulus of elasticity <code>E</code>, column 2 repesents the cross-section area <code>A</code> and column 3 repesents the second moment of area about the axis of bending <code>Iz</code>. In a Pandas DataFrame, the column names should be <code>E</code>, <code>A</code> and <code>Iz</code>. All columns are of type <code>np.float_</code>. When multiple members have the same material properties, it need be defined only once and the material property id must be indicated in the connectivity matrix <code>conn</code> defined above.</li>
-<li><code>jtloads: np.ndarray[(:, 4), np.float]</code> are the nodal loads, with reference to <strong>global axes</strong>. Row index + 1 is the nodal load number. Column 1 represents the number of the node to which the nodal load must be assigned. Columns 2 and 3 repesent the magnitudes of the <code>x</code> and <code>y</code> components of the load applied at the node and column 3 repesents the moment applied about the <code>z</code> axis at the specified node. Each nodal load must be defined independently, even when it may be identical to another load applied on a different node. In a Pandas DataFrame, the columns names must be <code>node</code>, <code>Px</code>, <code>Py</code>, <code>Mz</code>. Data type of the first column must be <code>np.int_</code> and columns 2 to 4 must be <code>np.float_</code>. When defining joint loads as a <code>numpy</code> array, all columns are defined as <code>np.float_</code> and the function <code>pf.data2df()</code> will automatically ensure the proper column names and data types. <strong>Note:</strong> If no nodal loads are applied on any of the nodes of the structure, it must be an empty array or DataFrame.</li>
-<li><code>memloads: np.ndarray[(:, 7), np.float_]</code> are the applied member actions, with reference to <strong>member axes</strong>. The negative values of the applied member end actions, transformed to global axes, will be taken as the equivalent joint loads in assembling the load vector. Row index + 1 is the member load number. Column 1 represents the number of the member to which the nodal load must be assigned. Columns 2, 3, 4 repesent the magnitudes of the loads applied at the origin node of the member and columns 5, 6, 7 represent the loads applied at the far node of the member. Loads at each node follow the sequence <code>Px</code>, <code>Py</code>, <code>Mz</code>. Each member load must be defined independently, even when it may be identical to another load applied on a different member. In a Pandas DataFrame, the columns names must be <code>member</code>, <code>Px1</code>, <code>Py1</code>, <code>Mz1</code>, <code>Px2</code>, <code>Py2</code>, <code>Mz2</code>. Data type of the first column must be <code>np.int_</code> and columns 2 to 7 must be <code>np.float_</code>. When defining member loads as a <code>numpy</code> array, all columns are defined as <code>np.float_</code> and the function <code>pf.data2df()</code> will automatically ensure the proper column names and data types. Member loads must be computed as the negative of the fixed end reactions produced in the member when subjected to the specified loads (may be one or more). These must be computed by the user and the program at present does not calculate these automatically for the common types of loads noramlly encountered in practice. <strong>Note:</strong> If no loads are applied on any of the members of the structure, it must be an empty array or DataFrame.</li>
+<li><code>mprop: np.ndarray[(:, 3), np.float64]</code> is a matrix representing each unique material property. Row index + 1 is the material number. Column 1 repesents the modulus of elasticity <code>E</code>, column 2 repesents the cross-section area <code>A</code> and column 3 repesents the second moment of area about the axis of bending <code>Iz</code>. In a Pandas DataFrame, the column names should be <code>E</code>, <code>A</code> and <code>Iz</code>. All columns are of type <code>np.float64</code>. When multiple members have the same material properties, it need be defined only once and the material property id must be indicated in the connectivity matrix <code>conn</code> defined above.</li>
+<li><code>jtloads: np.ndarray[(:, 4), np.float]</code> are the nodal loads, with reference to <strong>global axes</strong>. Row index + 1 is the nodal load number. Column 1 represents the number of the node to which the nodal load must be assigned. Columns 2 and 3 repesent the magnitudes of the <code>x</code> and <code>y</code> components of the load applied at the node and column 3 repesents the moment applied about the <code>z</code> axis at the specified node. Each nodal load must be defined independently, even when it may be identical to another load applied on a different node. In a Pandas DataFrame, the columns names must be <code>node</code>, <code>Px</code>, <code>Py</code>, <code>Mz</code>. Data type of the first column must be <code>np.int_</code> and columns 2 to 4 must be <code>np.float64</code>. When defining joint loads as a <code>numpy</code> array, all columns are defined as <code>np.float64</code> and the function <code>pf.data2df()</code> will automatically ensure the proper column names and data types. <strong>Note:</strong> If no nodal loads are applied on any of the nodes of the structure, it must be an empty array or DataFrame.</li>
+<li><code>memloads: np.ndarray[(:, 7), np.float64]</code> are the applied member actions, with reference to <strong>member axes</strong>. The negative values of the applied member end actions, transformed to global axes, will be taken as the equivalent joint loads in assembling the load vector. Row index + 1 is the member load number. Column 1 represents the number of the member to which the nodal load must be assigned. Columns 2, 3, 4 repesent the magnitudes of the loads applied at the origin node of the member and columns 5, 6, 7 represent the loads applied at the far node of the member. Loads at each node follow the sequence <code>Px</code>, <code>Py</code>, <code>Mz</code>. Each member load must be defined independently, even when it may be identical to another load applied on a different member. In a Pandas DataFrame, the columns names must be <code>member</code>, <code>Px1</code>, <code>Py1</code>, <code>Mz1</code>, <code>Px2</code>, <code>Py2</code>, <code>Mz2</code>. Data type of the first column must be <code>np.int_</code> and columns 2 to 7 must be <code>np.float64</code>. When defining member loads as a <code>numpy</code> array, all columns are defined as <code>np.float64</code> and the function <code>pf.data2df()</code> will automatically ensure the proper column names and data types. Member loads must be computed as the negative of the fixed end reactions produced in the member when subjected to the specified loads (may be one or more). These must be computed by the user and the program at present does not calculate these automatically for the common types of loads noramlly encountered in practice. <strong>Note:</strong> If no loads are applied on any of the members of the structure, it must be an empty array or DataFrame.</li>
 </ol>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p><img alt="Example problem from Weaver and Gere, pp. 243" src="../img/weaver.jpg" title="Weaver and Gere, pp. 243" /></p>
@@ -175,22 +178,22 @@
 <table>
 <thead>
 <tr>
-<th align="right"><code>x</code></th>
-<th align="right"><code>y</code></th>
+<th style="text-align: right;"><code>x</code></th>
+<th style="text-align: right;"><code>y</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right">100.0</td>
-<td align="right">75.0</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">75.0</td>
 </tr>
 <tr>
-<td align="right">0.0</td>
-<td align="right">75.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">75.0</td>
 </tr>
 <tr>
-<td align="right">200.0</td>
-<td align="right">0.0</td>
+<td style="text-align: right;">200.0</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 </tbody>
 </table>
@@ -199,24 +202,24 @@
 <table>
 <thead>
 <tr>
-<th align="center"><code>member</code></th>
-<th align="center"><code>node1</code></th>
-<th align="center"><code>node2</code></th>
-<th align="center"><code>mprop</code></th>
+<th style="text-align: center;"><code>member</code></th>
+<th style="text-align: center;"><code>node1</code></th>
+<th style="text-align: center;"><code>node2</code></th>
+<th style="text-align: center;"><code>mprop</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">1</td>
-<td align="center">2</td>
-<td align="center">1</td>
-<td align="center">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
 </tr>
 <tr>
-<td align="center">2</td>
-<td align="center">1</td>
-<td align="center">3</td>
-<td align="center">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
 </tr>
 </tbody>
 </table>
@@ -227,99 +230,99 @@
 <table>
 <thead>
 <tr>
-<th align="center"><code>node</code></th>
-<th align="center"><code>ux</code></th>
-<th align="center"><code>uy</code></th>
-<th align="center"><code>rz</code></th>
+<th style="text-align: center;"><code>node</code></th>
+<th style="text-align: center;"><code>ux</code></th>
+<th style="text-align: center;"><code>uy</code></th>
+<th style="text-align: center;"><code>rz</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">2</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
 </tr>
 <tr>
-<td align="center">3</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
 </tr>
 </tbody>
 </table>
 <h3 id="material-properties">Material Properties<a class="headerlink" href="#material-properties" title="Permanent link">&para;</a></h3>
-<p>Name of variable: <code>mprop</code>. Pandas column names: <code>E</code>, <code>A</code>, <code>Iz</code>. Data type of all columns: <code>np.float_</code>.</p>
+<p>Name of variable: <code>mprop</code>. Pandas column names: <code>E</code>, <code>A</code>, <code>Iz</code>. Data type of all columns: <code>np.float64</code>.</p>
 <p>Both members of this structure have the same material property and therefore we need only one material property to define this structure.</p>
 <table>
 <thead>
 <tr>
-<th align="right"><code>E</code></th>
-<th align="right"><code>A</code></th>
-<th align="right"><code>Iz</code></th>
+<th style="text-align: right;"><code>E</code></th>
+<th style="text-align: right;"><code>A</code></th>
+<th style="text-align: right;"><code>Iz</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right">10000</td>
-<td align="right">10</td>
-<td align="right">1000</td>
+<td style="text-align: right;">10000</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1000</td>
 </tr>
 </tbody>
 </table>
 <h3 id="nodal-loads">Nodal Loads<a class="headerlink" href="#nodal-loads" title="Permanent link">&para;</a></h3>
-<p>Name of variable: <code>jtloads</code>. Pandas column names: <code>node</code>, <code>Px</code>, <code>Py</code>, <code>Mz</code>. Data type of columns: <code>np.int_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>.</p>
+<p>Name of variable: <code>jtloads</code>. Pandas column names: <code>node</code>, <code>Px</code>, <code>Py</code>, <code>Mz</code>. Data type of columns: <code>np.int_</code>, <code>np.float64</code>, <code>np.float64</code>, <code>np.float64</code>.</p>
 <table>
 <thead>
 <tr>
-<th align="center"><code>node</code></th>
-<th align="right"><code>Px</code></th>
-<th align="right"><code>Py</code></th>
-<th align="right"><code>Mz</code></th>
+<th style="text-align: center;"><code>node</code></th>
+<th style="text-align: right;"><code>Px</code></th>
+<th style="text-align: right;"><code>Py</code></th>
+<th style="text-align: right;"><code>Mz</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">1</td>
-<td align="right">0</td>
-<td align="right">-10</td>
-<td align="right">-1000</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-10</td>
+<td style="text-align: right;">-1000</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Note:</strong> Sign convention for nodal loads is as per the global axes. Thus, <span class="arithmatex">\(P_x, P_y\)</span> are positive if they have the same sign as the global <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> axes, respectively. Sign of <span class="arithmatex">\(M_z\)</span> is as per the right hand rule. If direction of <span class="arithmatex">\(M_z\)</span> is the same as the direction of the fingers of the right hand when holding the global <span class="arithmatex">\(z\)</span> axis with the right hand with the thumb pointing in the same directioin as the global <span class="arithmatex">\(z\)</span> axis.</p>
 <h3 id="member-end-actions_1">Member End Actions<a class="headerlink" href="#member-end-actions_1" title="Permanent link">&para;</a></h3>
-<p>Name of variable: <code>memloads</code>. Pandas column names: <code>member</code>, <code>Px1</code>, <code>Py1</code>, <code>Mz1</code>, <code>Px2</code>, <code>Py2</code>, <code>Mz2</code>. Data types of columns: <code>np.int_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>, <code>np.float_</code>.</p>
+<p>Name of variable: <code>memloads</code>. Pandas column names: <code>member</code>, <code>Px1</code>, <code>Py1</code>, <code>Mz1</code>, <code>Px2</code>, <code>Py2</code>, <code>Mz2</code>. Data types of columns: <code>np.int_</code>, <code>np.float64</code>, <code>np.float64</code>, <code>np.float64</code>, <code>np.float64</code>, <code>np.float64</code>, <code>np.float64</code>.</p>
 <table>
 <thead>
 <tr>
-<th align="center"><code>member</code></th>
-<th align="right"><code>Px1</code></th>
-<th align="right"><code>Py1</code></th>
-<th align="right"><code>Mz1</code></th>
-<th align="right"><code>Px2</code></th>
-<th align="right"><code>Py2</code></th>
-<th align="right"><code>Mz2</code></th>
+<th style="text-align: center;"><code>member</code></th>
+<th style="text-align: right;"><code>Px1</code></th>
+<th style="text-align: right;"><code>Py1</code></th>
+<th style="text-align: right;"><code>Mz1</code></th>
+<th style="text-align: right;"><code>Px2</code></th>
+<th style="text-align: right;"><code>Py2</code></th>
+<th style="text-align: right;"><code>Mz2</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">1</td>
-<td align="right">0</td>
-<td align="right">12</td>
-<td align="right">200</td>
-<td align="right">0</td>
-<td align="right">12</td>
-<td align="right">-200</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">-200</td>
 </tr>
 <tr>
-<td align="center">2</td>
-<td align="right">-6</td>
-<td align="right">8</td>
-<td align="right">250</td>
-<td align="right">-6</td>
-<td align="right">8</td>
-<td align="right">-250</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: right;">-6</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">250</td>
+<td style="text-align: right;">-6</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">-250</td>
 </tr>
 </tbody>
 </table>
@@ -337,10 +340,10 @@ def input_data(prob: str):
     xy = np.array([[100.0, 75.0], [0.0, 75.0], [200.0, 0.0]])
     conn = np.array([[2, 1, 1], [1, 3, 1]], dtype=np.int_)
     bc = np.array([[2, 1, 1, 1], [3, 1, 1, 1]], dtype=np.int_)
-    mprop = np.array([[1.0e4, 10, 1.0e3]], dtype=np.float_)
-    jtloads = np.array([[1, 0, -10.0, -1000.0]], dtype=np.float_)
+    mprop = np.array([[1.0e4, 10, 1.0e3]], dtype=np.float64)
+    jtloads = np.array([[1, 0, -10.0, -1000.0]], dtype=np.float64)
     memloads = np.array(
-        [[1, 0.0, 12.0, 200.0, 0.0, 12.0, -200.0], [2, -6.0, 8.0, 250.0, -6.0, 8.0, -250.0]], dtype=np.float_
+        [[1, 0.0, 12.0, 200.0, 0.0, 12.0, -200.0], [2, -6.0, 8.0, 250.0, -6.0, 8.0, -250.0]], dtype=np.float64
     )
     return title, xy, conn, bc, mprop, jtloads, memloads
 
@@ -368,7 +371,7 @@ if __name__ == &quot;__main__&quot;:
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../installation/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../api/" class="btn btn-neutral float-right" title="API Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -392,24 +395,25 @@ if __name__ == &quot;__main__&quot;:
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../api/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme_extra.js" defer></script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../javascripts/mathjax.js" defer></script>
-      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
-      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
-        };
+        });
     </script>
 
 </body>

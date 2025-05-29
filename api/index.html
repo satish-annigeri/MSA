@@ -8,7 +8,7 @@
     <title>API Reference - MSA</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
         <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
     
       <script>
@@ -18,13 +18,12 @@
         var mkdocs_page_url = null;
       </script>
     
-    <script src="../js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.min.js"></script>
     <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+      <script>hljs.highlightAll();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -47,47 +46,51 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../usermanual/">User Manual</a>
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">API Reference</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">API Reference</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#plane-frame-package">Plane Frame Package</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf">msa.pf</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf">pf</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_assem_loadvec_jl">pf_assem_loadvec_jl()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_assem_loadvec_jl">pf_assem_loadvec_jl</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_assem_loadvec_ml">pf_assem_loadvec_ml()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_assem_loadvec_ml">pf_assem_loadvec_ml</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_assemssm">pf_assemssm()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_assemssm">pf_assemssm</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_calclen">pf_calclen()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_calclen">pf_calclen</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_calclm">pf_calclm()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_calclm">pf_calclm</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_calcrot">pf_calcrot()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_calcrot">pf_calcrot</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_get_dof">pf_get_dof()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_get_dof">pf_get_dof</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_get_endcoord">pf_get_endcoord()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_get_endcoord">pf_get_endcoord</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_get_endjts">pf_get_endjts()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_get_endjts">pf_get_endjts</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_get_memprop">pf_get_memprop()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_get_memprop">pf_get_memprop</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_gstiff">pf_gstiff()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_gstiff">pf_gstiff</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_loadvec">pf_loadvec()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_loadvec">pf_loadvec</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_mem_endforces">pf_mem_endforces()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_mem_endforces">pf_mem_endforces</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_ssm">pf_ssm()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_ssm">pf_ssm</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_stiff">pf_stiff()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.pf_stiff">pf_stiff</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.print_mat">print_mat()</a>
+    <li class="toctree-l2"><a class="reference internal" href="#msa.pf.print_mat">print_mat</a>
     </li>
     </ul>
                 </li>
@@ -105,8 +108,8 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-      <li>API Reference</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -122,14 +125,21 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="msa.pf"></a>
-  <div class="doc doc-contents first">
-  
-      <p>Python package for analysis of skeletal structures using the direct stiffness method. The code is based
+    <div class="doc doc-contents first">
+
+        <p>Python package for analysis of skeletal structures using the direct stiffness method. The code is based
 on the theory and flowcharts in Weaver, W. and Gere, J.M., <em>Matrix Analysis of Framed Structures</em>,
 CBS Publishers, New Delhi, 1986. The package <code>pf</code> implements the analysis of plane frames.</p>
 
-  
+
+
+
+
+
+
+
 
   <div class="doc doc-children">
 
@@ -144,16 +154,16 @@ CBS Publishers, New Delhi, 1986. The package <code>pf</code> implements the anal
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_assem_loadvec_jl" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_assem_loadvec_jl</span><span class="p">(</span><span class="n">lm</span><span class="p">,</span> <span class="n">df_jtloads</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_assem_loadvec_jl(lm, df_jtloads, P)</code>
 
 <a href="#msa.pf.pf_assem_loadvec_jl" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Superpose joint loads on structure load vector</p>
+    <div class="doc doc-contents ">
+
+        <p>Superpose joint loads on structure load vector</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -166,7 +176,7 @@ CBS Publishers, New Delhi, 1986. The package <code>pf</code> implements the anal
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>lm</b>
+              <b><code>lm</code></b>
                   (<code><span title="msa.pf.NDArrayInt">NDArrayInt</span></code>)
               –
               <div class="doc-md-description">
@@ -174,15 +184,15 @@ CBS Publishers, New Delhi, 1986. The package <code>pf</code> implements the anal
               </div>
             </li>
             <li>
-              <b>df_jtloads</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_jtloads</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Nodal loads table</p>
               </div>
             </li>
             <li>
-              <b>P</b>
+              <b><code>P</code></b>
                   (<code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>)
               –
               <div class="doc-md-description">
@@ -194,6 +204,7 @@ CBS Publishers, New Delhi, 1986. The package <code>pf</code> implements the anal
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -201,94 +212,69 @@ CBS Publishers, New Delhi, 1986. The package <code>pf</code> implements the anal
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-                <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
-            –
-            <div class="doc-md-description">
-              <p>Modified load vector after superposing all nodal loads</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Modified load vector after superposing all nodal loads</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">367</span>
-<span class="normal">368</span>
-<span class="normal">369</span>
-<span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span>
-<span class="normal">376</span>
-<span class="normal">377</span>
-<span class="normal">378</span>
-<span class="normal">379</span>
-<span class="normal">380</span>
-<span class="normal">381</span>
-<span class="normal">382</span>
-<span class="normal">383</span>
-<span class="normal">384</span>
-<span class="normal">385</span>
-<span class="normal">386</span>
-<span class="normal">387</span>
-<span class="normal">388</span>
-<span class="normal">389</span>
-<span class="normal">390</span>
-<span class="normal">391</span>
-<span class="normal">392</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_assem_loadvec_jl</span><span class="p">(</span><span class="n">lm</span><span class="p">,</span> <span class="n">df_jtloads</span><span class="p">,</span> <span class="n">P</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Superpose joint loads on structure load vector</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    lm : NDArrayInt</span>
-<span class="sd">        Location matrix, specifying degree of freedom number for each node</span>
-<span class="sd">    df_jtloads : pd.DataFrame</span>
-<span class="sd">        Nodal loads table</span>
-<span class="sd">    P : NDArrayFloat</span>
-<span class="sd">        Load vector</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_assem_loadvec_jl(lm, df_jtloads, P):
+    """Superpose joint loads on structure load vector
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    NDArrayFloat</span>
-<span class="sd">        Modified load vector after superposing all nodal loads</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">nloads</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_jtloads</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">iload</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nloads</span><span class="p">):</span>
-        <span class="n">jt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">df_jtloads</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">iload</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-        <span class="n">jtdof</span> <span class="o">=</span> <span class="n">lm</span><span class="p">[</span><span class="n">jt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">jtdof</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
-                <span class="n">i</span> <span class="o">=</span> <span class="n">jtdof</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-                <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">df_jtloads</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">iload</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">P</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    lm : NDArrayInt
+        Location matrix, specifying degree of freedom number for each node
+    df_jtloads : pd.DataFrame
+        Nodal loads table
+    P : NDArrayFloat
+        Load vector
+
+    Returns
+    -------
+    NDArrayFloat
+        Modified load vector after superposing all nodal loads
+    """
+    nloads = len(df_jtloads)
+    for iload in range(nloads):
+        jt = int(df_jtloads.iloc[iload, 0])
+        jtdof = lm[jt - 1, :]
+        for j in range(3):
+            if jtdof[j]:
+                i = jtdof[j] - 1
+                P[i] += df_jtloads.iloc[iload, j + 1]
+    return P</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_assem_loadvec_ml" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_assem_loadvec_ml</span><span class="p">(</span><span class="n">iload</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">lm</span><span class="p">,</span> <span class="n">df_memloads</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_assem_loadvec_ml(iload, df_xy, df_conn, lm, df_memloads, P)</code>
 
 <a href="#msa.pf.pf_assem_loadvec_ml" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Superpose equivalent joint loads due to loads applied on members onto
+    <div class="doc doc-contents ">
+
+        <p>Superpose equivalent joint loads due to loads applied on members onto
 structure load vector</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -301,31 +287,31 @@ structure load vector</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>iload</b>
-                  (<code>int</code>)
+              <b><code>iload</code></b>
+                  (<code><span title="int">int</span></code>)
               –
               <div class="doc-md-description">
                 <p>Number of member load</p>
               </div>
             </li>
             <li>
-              <b>df_xy</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_xy</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Coordinates of nodes</p>
               </div>
             </li>
             <li>
-              <b>df_conn</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_conn</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Connectivity of members</p>
               </div>
             </li>
             <li>
-              <b>lm</b>
+              <b><code>lm</code></b>
                   (<code><span title="msa.pf.NDArrayInt">NDArrayInt</span></code>)
               –
               <div class="doc-md-description">
@@ -333,15 +319,15 @@ structure load vector</p>
               </div>
             </li>
             <li>
-              <b>df_memloads</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_memloads</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Member load table</p>
               </div>
             </li>
             <li>
-              <b>P</b>
+              <b><code>P</code></b>
                   (<code>Load vector</code>)
               –
               <div class="doc-md-description">
@@ -353,6 +339,7 @@ structure load vector</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -360,120 +347,82 @@ structure load vector</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-                <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
-            –
-            <div class="doc-md-description">
-              <p>Modified load vector after superposing member load number <code>iload</code></p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Modified load vector after superposing member load number <code>iload</code></p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">396</span>
-<span class="normal">397</span>
-<span class="normal">398</span>
-<span class="normal">399</span>
-<span class="normal">400</span>
-<span class="normal">401</span>
-<span class="normal">402</span>
-<span class="normal">403</span>
-<span class="normal">404</span>
-<span class="normal">405</span>
-<span class="normal">406</span>
-<span class="normal">407</span>
-<span class="normal">408</span>
-<span class="normal">409</span>
-<span class="normal">410</span>
-<span class="normal">411</span>
-<span class="normal">412</span>
-<span class="normal">413</span>
-<span class="normal">414</span>
-<span class="normal">415</span>
-<span class="normal">416</span>
-<span class="normal">417</span>
-<span class="normal">418</span>
-<span class="normal">419</span>
-<span class="normal">420</span>
-<span class="normal">421</span>
-<span class="normal">422</span>
-<span class="normal">423</span>
-<span class="normal">424</span>
-<span class="normal">425</span>
-<span class="normal">426</span>
-<span class="normal">427</span>
-<span class="normal">428</span>
-<span class="normal">429</span>
-<span class="normal">430</span>
-<span class="normal">431</span>
-<span class="normal">432</span>
-<span class="normal">433</span>
-<span class="normal">434</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_assem_loadvec_ml</span><span class="p">(</span><span class="n">iload</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">lm</span><span class="p">,</span> <span class="n">df_memloads</span><span class="p">,</span> <span class="n">P</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Superpose equivalent joint loads due to loads applied on members onto</span>
-<span class="sd">    structure load vector</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    iload : int</span>
-<span class="sd">        Number of member load</span>
-<span class="sd">    df_xy : pd.DataFrame</span>
-<span class="sd">        Coordinates of nodes</span>
-<span class="sd">    df_conn : pd.DataFrame</span>
-<span class="sd">        Connectivity of members</span>
-<span class="sd">    lm : NDArrayInt</span>
-<span class="sd">        Location matrix, specifying degree of freedom number for each node</span>
-<span class="sd">    df_memloads : pd.DataFrame</span>
-<span class="sd">        Member load table</span>
-<span class="sd">    P : Load vector</span>
-<span class="sd">        _description_</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_assem_loadvec_ml(iload, df_xy, df_conn, lm, df_memloads, P):
+    """Superpose equivalent joint loads due to loads applied on members onto
+    structure load vector
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    NDArrayFloat</span>
-<span class="sd">        Modified load vector after superposing member load number `iload`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">imem</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">df_memloads</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">iload</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-    <span class="n">xy1</span><span class="p">,</span> <span class="n">xy2</span> <span class="o">=</span> <span class="n">pf_get_endcoord</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">)</span>
-    <span class="n">L</span><span class="p">,</span> <span class="n">dc</span> <span class="o">=</span> <span class="n">pf_calclen</span><span class="p">(</span><span class="n">xy1</span><span class="p">,</span> <span class="n">xy2</span><span class="p">)</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">pf_calcrot</span><span class="p">(</span><span class="n">dc</span><span class="p">)</span>
-    <span class="n">ml</span> <span class="o">=</span> <span class="n">df_memloads</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">iload</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
-    <span class="c1"># ml = ml.reshape(len(ml), 1)</span>
-    <span class="c1"># ml = ml.values</span>
-    <span class="c1"># am = np.dot(-r.T, ml)</span>
-    <span class="n">am</span> <span class="o">=</span> <span class="o">-</span><span class="n">r</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">ml</span>
-    <span class="n">memdof</span> <span class="o">=</span> <span class="n">pf_get_dof</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">lm</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">memdof</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-            <span class="n">ii</span> <span class="o">=</span> <span class="n">memdof</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-            <span class="n">P</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">+=</span> <span class="n">am</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">P</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    iload : int
+        Number of member load
+    df_xy : pd.DataFrame
+        Coordinates of nodes
+    df_conn : pd.DataFrame
+        Connectivity of members
+    lm : NDArrayInt
+        Location matrix, specifying degree of freedom number for each node
+    df_memloads : pd.DataFrame
+        Member load table
+    P : Load vector
+        _description_
+
+    Returns
+    -------
+    NDArrayFloat
+        Modified load vector after superposing member load number `iload`
+    """
+    imem = int(df_memloads.iloc[iload - 1, 0])
+    xy1, xy2 = pf_get_endcoord(imem, df_xy, df_conn)
+    L, dc = pf_calclen(xy1, xy2)
+    r = pf_calcrot(dc)
+    ml = df_memloads.iloc[iload - 1, 1:7]
+    # ml = ml.reshape(len(ml), 1)
+    # ml = ml.values
+    # am = np.dot(-r.T, ml)
+    am = -r.T @ ml
+    memdof = pf_get_dof(imem, df_conn, lm)
+    for i in range(6):
+        if memdof[i]:
+            ii = memdof[i] - 1
+            P[ii] += am[i]
+    return P</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_assemssm" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_assemssm</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">,</span> <span class="n">lm</span><span class="p">,</span> <span class="n">ssm</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_assemssm(imem, df_xy, df_conn, df_mprop, lm, ssm)</code>
 
 <a href="#msa.pf.pf_assemssm" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Superpose stiffness matrix of plane frame member on the structure
+    <div class="doc doc-contents ">
+
+        <p>Superpose stiffness matrix of plane frame member on the structure
 stiffness matrix</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -486,39 +435,39 @@ stiffness matrix</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>imem</b>
-                  (<code>int</code>)
+              <b><code>imem</code></b>
+                  (<code><span title="int">int</span></code>)
               –
               <div class="doc-md-description">
                 <p>Number of the member</p>
               </div>
             </li>
             <li>
-              <b>df_xy</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_xy</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Coordinates of nodes</p>
               </div>
             </li>
             <li>
-              <b>df_conn</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_conn</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Connectivity of members</p>
               </div>
             </li>
             <li>
-              <b>df_mprop</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_mprop</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Material properties table</p>
               </div>
             </li>
             <li>
-              <b>lm</b>
+              <b><code>lm</code></b>
                   (<code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>)
               –
               <div class="doc-md-description">
@@ -526,7 +475,7 @@ stiffness matrix</p>
               </div>
             </li>
             <li>
-              <b>ssm</b>
+              <b><code>ssm</code></b>
                   (<code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>)
               –
               <div class="doc-md-description">
@@ -538,6 +487,7 @@ stiffness matrix</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -545,109 +495,76 @@ stiffness matrix</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-                <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
-            –
-            <div class="doc-md-description">
-              <p>Structure stiffness matrix, after superposition of global stiffness of all members</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Structure stiffness matrix, after superposition of global stiffness of all members</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">296</span>
-<span class="normal">297</span>
-<span class="normal">298</span>
-<span class="normal">299</span>
-<span class="normal">300</span>
-<span class="normal">301</span>
-<span class="normal">302</span>
-<span class="normal">303</span>
-<span class="normal">304</span>
-<span class="normal">305</span>
-<span class="normal">306</span>
-<span class="normal">307</span>
-<span class="normal">308</span>
-<span class="normal">309</span>
-<span class="normal">310</span>
-<span class="normal">311</span>
-<span class="normal">312</span>
-<span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span>
-<span class="normal">316</span>
-<span class="normal">317</span>
-<span class="normal">318</span>
-<span class="normal">319</span>
-<span class="normal">320</span>
-<span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span>
-<span class="normal">324</span>
-<span class="normal">325</span>
-<span class="normal">326</span>
-<span class="normal">327</span>
-<span class="normal">328</span>
-<span class="normal">329</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_assemssm</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">,</span> <span class="n">lm</span><span class="p">,</span> <span class="n">ssm</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Superpose stiffness matrix of plane frame member on the structure</span>
-<span class="sd">    stiffness matrix</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    imem : int</span>
-<span class="sd">        Number of the member</span>
-<span class="sd">    df_xy : pd.DataFrame</span>
-<span class="sd">        Coordinates of nodes</span>
-<span class="sd">    df_conn : pd.DataFrame</span>
-<span class="sd">        Connectivity of members</span>
-<span class="sd">    df_mprop : pd.DataFrame</span>
-<span class="sd">        Material properties table</span>
-<span class="sd">    lm : NDArrayFloat</span>
-<span class="sd">        Location matrix, specifying degree of freedom number for each node</span>
-<span class="sd">    ssm : NDArrayFloat</span>
-<span class="sd">        Structure stiffness matrix, initially a zero matrix</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_assemssm(imem, df_xy, df_conn, df_mprop, lm, ssm):
+    """Superpose stiffness matrix of plane frame member on the structure
+    stiffness matrix
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    NDArrayFloat</span>
-<span class="sd">        Structure stiffness matrix, after superposition of global stiffness of all members</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">K</span> <span class="o">=</span> <span class="n">pf_gstiff</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">)</span>
-    <span class="n">memdof</span> <span class="o">=</span> <span class="n">pf_get_dof</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">lm</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">memdof</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">memdof</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">memdof</span><span class="p">)):</span>
-                <span class="k">if</span> <span class="n">memdof</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
-                    <span class="n">ii</span> <span class="o">=</span> <span class="n">memdof</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-                    <span class="n">jj</span> <span class="o">=</span> <span class="n">memdof</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-                    <span class="n">ssm</span><span class="p">[</span><span class="n">ii</span><span class="p">,</span> <span class="n">jj</span><span class="p">]</span> <span class="o">+=</span> <span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">ssm</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    imem : int
+        Number of the member
+    df_xy : pd.DataFrame
+        Coordinates of nodes
+    df_conn : pd.DataFrame
+        Connectivity of members
+    df_mprop : pd.DataFrame
+        Material properties table
+    lm : NDArrayFloat
+        Location matrix, specifying degree of freedom number for each node
+    ssm : NDArrayFloat
+        Structure stiffness matrix, initially a zero matrix
+
+    Returns
+    -------
+    NDArrayFloat
+        Structure stiffness matrix, after superposition of global stiffness of all members
+    """
+    K = pf_gstiff(imem, df_xy, df_conn, df_mprop)
+    memdof = pf_get_dof(imem, df_conn, lm)
+    for i in range(len(memdof)):
+        if memdof[i]:
+            for j in range(len(memdof)):
+                if memdof[j]:
+                    ii = memdof[i] - 1
+                    jj = memdof[j] - 1
+                    ssm[ii, jj] += K[i, j]
+    return ssm</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_calclen" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_calclen</span><span class="p">(</span><span class="n">xy1</span><span class="p">,</span> <span class="n">xy2</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_calclen(xy1, xy2)</code>
 
 <a href="#msa.pf.pf_calclen" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Calculate length and direction cosines of a plane frame member</p>
+    <div class="doc doc-contents ">
+
+        <p>Calculate length and direction cosines of a plane frame member</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -660,7 +577,7 @@ stiffness matrix</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>xy1</b>
+              <b><code>xy1</code></b>
                   (<code>NDArrayFloat shape (2,)</code>)
               –
               <div class="doc-md-description">
@@ -668,7 +585,7 @@ stiffness matrix</p>
               </div>
             </li>
             <li>
-              <b>xy2</b>
+              <b><code>xy2</code></b>
                   (<code>NDArrayFloat shape (2,)</code>)
               –
               <div class="doc-md-description">
@@ -680,6 +597,7 @@ stiffness matrix</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -687,79 +605,61 @@ stiffness matrix</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-                <code>float</code>
-            –
-            <div class="doc-md-description">
-              <p>Length of the member</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="float">float</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Length of the member</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_calclen</span><span class="p">(</span><span class="n">xy1</span><span class="p">,</span> <span class="n">xy2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate length and direction cosines of a plane frame member</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    xy1 : NDArrayFloat shape (2,)</span>
-<span class="sd">        (x, y) coordinates of node 1</span>
-<span class="sd">    xy2 : NDArrayFloat shape (2,)</span>
-<span class="sd">        (x, y) coordinates of node 2</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_calclen(xy1, xy2):
+    """Calculate length and direction cosines of a plane frame member
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    float</span>
-<span class="sd">        Length of the member</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">delta</span> <span class="o">=</span> <span class="n">xy2</span> <span class="o">-</span> <span class="n">xy1</span>
-    <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">delta</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-    <span class="n">dc</span> <span class="o">=</span> <span class="n">delta</span> <span class="o">/</span> <span class="n">L</span>
-    <span class="k">return</span> <span class="n">L</span><span class="p">,</span> <span class="n">dc</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    xy1 : NDArrayFloat shape (2,)
+        (x, y) coordinates of node 1
+    xy2 : NDArrayFloat shape (2,)
+        (x, y) coordinates of node 2
+
+    Returns
+    -------
+    float
+        Length of the member
+    """
+    delta = xy2 - xy1
+    L = np.sqrt(np.sum(delta**2))
+    dc = delta / L
+    return L, dc</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_calclm" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_calclm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">df_bc</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_calclm(n, df_bc)</code>
 
 <a href="#msa.pf.pf_calclm" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Calculate location matrix containing degree of freedom numbers of each node</p>
+    <div class="doc doc-contents ">
+
+        <p>Calculate location matrix containing degree of freedom numbers of each node</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -772,16 +672,16 @@ stiffness matrix</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>n</b>
-                  (<code>int</code>)
+              <b><code>n</code></b>
+                  (<code><span title="int">int</span></code>)
               –
               <div class="doc-md-description">
                 <p>Number of nodes in the structure</p>
               </div>
             </li>
             <li>
-              <b>df_bc</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_bc</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Boundary condition for each degree of freedom of each node. 1 is restrained and 0 is unrestrained.</p>
@@ -792,6 +692,7 @@ stiffness matrix</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -799,112 +700,81 @@ stiffness matrix</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-<b>lm</b>(                <code><span title="msa.pf.NDArrayInt">NDArrayInt</span></code>
-)            –
-            <div class="doc-md-description">
-              <p>Integer array with degree of freedom number of each nodal displacement</p>
-            </div>
-          </li>
-          <li>
-<b>nd</b>(                <code>int</code>
-)            –
-            <div class="doc-md-description">
-              <p>Number of degrees of freedom of the structure</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>lm</code></b>(                  <code><span title="msa.pf.NDArrayInt">NDArrayInt</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Integer array with degree of freedom number of each nodal displacement</p>
+              </div>
+            </li>
+            <li>
+<b><code>nd</code></b>(                  <code><span title="int">int</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Number of degrees of freedom of the structure</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_calclm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">df_bc</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate location matrix containing degree of freedom numbers of each node</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    n : int</span>
-<span class="sd">        Number of nodes in the structure</span>
-<span class="sd">    df_bc : pd.DataFrame</span>
-<span class="sd">        Boundary condition for each degree of freedom of each node. 1 is restrained and 0 is unrestrained.</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_calclm(n, df_bc: pd.DataFrame):
+    """Calculate location matrix containing degree of freedom numbers of each node
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    lm : NDArrayInt</span>
-<span class="sd">         Integer array with degree of freedom number of each nodal displacement</span>
-<span class="sd">    nd : int</span>
-<span class="sd">         Number of degrees of freedom of the structure</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">lm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">)</span>
-    <span class="n">nd</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">ns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_bc</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ns</span><span class="p">):</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">df_bc</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># type: ignore</span>
-        <span class="n">lm</span><span class="p">[</span><span class="n">node</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_bc</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+    Parameters
+    ----------
+    n : int
+        Number of nodes in the structure
+    df_bc : pd.DataFrame
+        Boundary condition for each degree of freedom of each node. 1 is restrained and 0 is unrestrained.
 
-    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">lm</span><span class="p">[</span><span class="n">node</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">nd</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="n">lm</span><span class="p">[</span><span class="n">node</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">nd</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">lm</span><span class="p">[</span><span class="n">node</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">lm</span><span class="p">,</span> <span class="n">nd</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Returns
+    -------
+    lm : NDArrayInt
+         Integer array with degree of freedom number of each nodal displacement
+    nd : int
+         Number of degrees of freedom of the structure
+    """
+    lm = np.zeros((n, 3), dtype=np.int_)
+    nd = 0
+    ns = len(df_bc)
+    for i in range(ns):
+        node = int(df_bc.iloc[i, 0])  # type: ignore
+        lm[node - 1, 0:3] = df_bc.iloc[i, 1:4]
+
+    for node in range(n):
+        for j in range(3):
+            if lm[node, j] == 0:
+                nd += 1
+                lm[node, j] = nd
+            else:
+                lm[node, j] = 0
+    return lm, nd</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_calcrot" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_calcrot</span><span class="p">(</span><span class="n">dc</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_calcrot(dc)</code>
 
 <a href="#msa.pf.pf_calcrot" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Calculate rotation matrix of a plane frame member given its direction cosines</p>
+    <div class="doc doc-contents ">
+
+        <p>Calculate rotation matrix of a plane frame member given its direction cosines</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -917,7 +787,7 @@ stiffness matrix</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>dc</b>
+              <b><code>dc</code></b>
                   (<code>NDArrayFloat shape (2,)</code>)
               –
               <div class="doc-md-description">
@@ -929,6 +799,7 @@ stiffness matrix</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -936,87 +807,65 @@ stiffness matrix</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-                <code>NDArrayFloat shape (6, 6)</code>
-            –
-            <div class="doc-md-description">
-              <p>Rotation matrix to transform local stiffness matrix to global stiffness matrix</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code>NDArrayFloat shape (6, 6)</code>
+              –
+              <div class="doc-md-description">
+                <p>Rotation matrix to transform local stiffness matrix to global stiffness matrix</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_calcrot</span><span class="p">(</span><span class="n">dc</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate rotation matrix of a plane frame member given its direction cosines</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    dc : NDArrayFloat shape (2,)</span>
-<span class="sd">        Direction cosines of the member with reference to x-y axes</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_calcrot(dc):
+    """Calculate rotation matrix of a plane frame member given its direction cosines
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    NDArrayFloat shape (6, 6)</span>
-<span class="sd">        Rotation matrix to transform local stiffness matrix to global stiffness matrix</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="n">cx</span> <span class="o">=</span> <span class="n">dc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">cy</span> <span class="o">=</span> <span class="n">dc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">cx</span>
-    <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">cy</span>
-    <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">cy</span>
-    <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">cx</span>
-    <span class="n">r</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">r</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">r</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    dc : NDArrayFloat shape (2,)
+        Direction cosines of the member with reference to x-y axes
+
+    Returns
+    -------
+    NDArrayFloat shape (6, 6)
+        Rotation matrix to transform local stiffness matrix to global stiffness matrix
+    """
+    r = np.zeros((6, 6), dtype=float)
+    cx = dc[0]
+    cy = dc[1]
+    r[0, 0] = cx
+    r[0, 1] = cy
+    r[1, 0] = -cy
+    r[1, 1] = cx
+    r[2, 2] = 1
+    r[3:6, 3:6] = r[0:3, 0:3]
+    return r</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_get_dof" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_get_dof</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">lm</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_get_dof(imem, df_conn, lm)</code>
 
 <a href="#msa.pf.pf_get_dof" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Return degree of freedom numbers of the ends of a plane frame member</p>
+    <div class="doc doc-contents ">
+
+        <p>Return degree of freedom numbers of the ends of a plane frame member</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -1029,23 +878,23 @@ stiffness matrix</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>imem</b>
-                  (<code>int</code>)
+              <b><code>imem</code></b>
+                  (<code><span title="int">int</span></code>)
               –
               <div class="doc-md-description">
                 <p>Number of the member</p>
               </div>
             </li>
             <li>
-              <b>df_conn</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_conn</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Connectivity of members</p>
               </div>
             </li>
             <li>
-              <b>lm</b>
+              <b><code>lm</code></b>
                   (<code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>)
               –
               <div class="doc-md-description">
@@ -1057,6 +906,7 @@ stiffness matrix</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -1064,85 +914,64 @@ stiffness matrix</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-                <code><span title="msa.pf.NDArrayInt">NDArrayInt</span></code>
-            –
-            <div class="doc-md-description">
-              <p>Degree of freedom numbers for node1 and node2</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="msa.pf.NDArrayInt">NDArrayInt</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Degree of freedom numbers for node1 and node2</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_get_dof</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">lm</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return degree of freedom numbers of the ends of a plane frame member</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    imem : int</span>
-<span class="sd">        Number of the member</span>
-<span class="sd">    df_conn : pd.DataFrame</span>
-<span class="sd">        Connectivity of members</span>
-<span class="sd">    lm : NDArrayFloat</span>
-<span class="sd">        Location matrix, specifying degree of freedom number for each node</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_get_dof(imem, df_conn, lm):
+    """Return degree of freedom numbers of the ends of a plane frame member
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    NDArrayInt</span>
-<span class="sd">        Degree of freedom numbers for node1 and node2</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">jt1</span><span class="p">,</span> <span class="n">jt2</span> <span class="o">=</span> <span class="n">pf_get_endjts</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">)</span>
-    <span class="n">memdof</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-    <span class="n">memdof</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">lm</span><span class="p">[</span><span class="n">jt1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
-    <span class="n">memdof</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">lm</span><span class="p">[</span><span class="n">jt2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
-    <span class="k">return</span> <span class="n">memdof</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    imem : int
+        Number of the member
+    df_conn : pd.DataFrame
+        Connectivity of members
+    lm : NDArrayFloat
+        Location matrix, specifying degree of freedom number for each node
+
+    Returns
+    -------
+    NDArrayInt
+        Degree of freedom numbers for node1 and node2
+    """
+    jt1, jt2 = pf_get_endjts(imem, df_conn)
+    memdof = np.array([0, 0, 0, 0, 0, 0])
+    memdof[0:3] = lm[jt1 - 1, :]
+    memdof[3:6] = lm[jt2 - 1, :]
+    return memdof</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_get_endcoord" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_get_endcoord</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_get_endcoord(imem, df_xy, df_conn)</code>
 
 <a href="#msa.pf.pf_get_endcoord" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Return the coordinates of the first and second end of a plane frame member</p>
+    <div class="doc doc-contents ">
+
+        <p>Return the coordinates of the first and second end of a plane frame member</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -1155,24 +984,24 @@ stiffness matrix</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>imem</b>
-                  (<code>int</code>)
+              <b><code>imem</code></b>
+                  (<code><span title="int">int</span></code>)
               –
               <div class="doc-md-description">
                 <p>Number of the member</p>
               </div>
             </li>
             <li>
-              <b>df_xy</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_xy</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Coordinates of nodes</p>
               </div>
             </li>
             <li>
-              <b>df_conn</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_conn</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Connectivity of members</p>
@@ -1183,6 +1012,7 @@ stiffness matrix</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -1190,94 +1020,72 @@ stiffness matrix</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-<b>xy1</b>(                <code>Float</code>
-)            –
-            <div class="doc-md-description">
-              <p>Coordinate of node1</p>
-            </div>
-          </li>
-          <li>
-<b>xy2</b>(                <code>Float</code>
-)            –
-            <div class="doc-md-description">
-              <p>Coordinate of node2</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>xy1</code></b>(                  <code><span title="Float">Float</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Coordinate of node1</p>
+              </div>
+            </li>
+            <li>
+<b><code>xy2</code></b>(                  <code><span title="Float">Float</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Coordinate of node2</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_get_endcoord</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the coordinates of the first and second end of a plane frame member</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    imem : int</span>
-<span class="sd">        Number of the member</span>
-<span class="sd">    df_xy : pd.DataFrame</span>
-<span class="sd">        Coordinates of nodes</span>
-<span class="sd">    df_conn : pd.DataFrame</span>
-<span class="sd">        Connectivity of members</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_get_endcoord(imem, df_xy, df_conn):
+    """Return the coordinates of the first and second end of a plane frame member
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    xy1 : Float</span>
-<span class="sd">        Coordinate of node1</span>
-<span class="sd">    xy2 : Float</span>
-<span class="sd">        Coordinate of node2</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">jt1</span><span class="p">,</span> <span class="n">jt2</span> <span class="o">=</span> <span class="n">pf_get_endjts</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">)</span>
-    <span class="n">xy1</span> <span class="o">=</span> <span class="n">df_xy</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">jt1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># type: ignore</span>
-    <span class="n">xy2</span> <span class="o">=</span> <span class="n">df_xy</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">jt2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># type: ignore</span>
-    <span class="k">return</span> <span class="n">xy1</span><span class="p">,</span> <span class="n">xy2</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    imem : int
+        Number of the member
+    df_xy : pd.DataFrame
+        Coordinates of nodes
+    df_conn : pd.DataFrame
+        Connectivity of members
+
+    Returns
+    -------
+    xy1 : Float
+        Coordinate of node1
+    xy2 : Float
+        Coordinate of node2
+    """
+    jt1, jt2 = pf_get_endjts(imem, df_conn)
+    xy1 = df_xy.iloc[int(jt1) - 1, :]  # type: ignore
+    xy2 = df_xy.iloc[int(jt2) - 1, :]  # type: ignore
+    return xy1, xy2</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_get_endjts" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_get_endjts</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_get_endjts(imem, df_conn)</code>
 
 <a href="#msa.pf.pf_get_endjts" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Return numbers of first and second end of a plane frame member</p>
+    <div class="doc doc-contents ">
+
+        <p>Return numbers of first and second end of a plane frame member</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -1290,16 +1098,16 @@ stiffness matrix</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>imem</b>
-                  (<code>int</code>)
+              <b><code>imem</code></b>
+                  (<code><span title="int">int</span></code>)
               –
               <div class="doc-md-description">
                 <p>Number of member</p>
               </div>
             </li>
             <li>
-              <b>df_conn</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_conn</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Connectivity matrix</p>
@@ -1310,6 +1118,7 @@ stiffness matrix</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -1317,86 +1126,68 @@ stiffness matrix</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-<b>jt1</b>(                <code>int</code>
-)            –
-            <div class="doc-md-description">
-              <p>Node1</p>
-            </div>
-          </li>
-          <li>
-<b>jt2</b>(                <code>int</code>
-)            –
-            <div class="doc-md-description">
-              <p>Node 2</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>jt1</code></b>(                  <code><span title="int">int</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Node1</p>
+              </div>
+            </li>
+            <li>
+<b><code>jt2</code></b>(                  <code><span title="int">int</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Node 2</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_get_endjts</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return numbers of first and second end of a plane frame member</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    imem : int</span>
-<span class="sd">        Number of member</span>
-<span class="sd">    df_conn : pd.DataFrame</span>
-<span class="sd">        Connectivity matrix</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_get_endjts(imem, df_conn: pd.DataFrame):
+    """Return numbers of first and second end of a plane frame member
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    jt1 : int</span>
-<span class="sd">        Node1</span>
-<span class="sd">    jt2 : int</span>
-<span class="sd">        Node 2</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">jt1</span><span class="p">,</span> <span class="n">jt2</span> <span class="o">=</span> <span class="n">df_conn</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">imem</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">jt1</span><span class="p">,</span> <span class="n">jt2</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    imem : int
+        Number of member
+    df_conn : pd.DataFrame
+        Connectivity matrix
+
+    Returns
+    -------
+    jt1 : int
+        Node1
+    jt2 : int
+        Node 2
+    """
+    jt1, jt2 = df_conn.iloc[imem - 1, 0:2]
+    return jt1, jt2</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_get_memprop" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_get_memprop</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_get_memprop(imem, df_xy, df_conn, df_mprop)</code>
 
 <a href="#msa.pf.pf_get_memprop" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Return the material properties of specified plane frame member</p>
+    <div class="doc doc-contents ">
+
+        <p>Return the material properties of specified plane frame member</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -1409,32 +1200,32 @@ stiffness matrix</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>imem</b>
-                  (<code>int</code>)
+              <b><code>imem</code></b>
+                  (<code><span title="int">int</span></code>)
               –
               <div class="doc-md-description">
                 <p>Number of the member</p>
               </div>
             </li>
             <li>
-              <b>df_xy</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_xy</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Coordinates of nodes</p>
               </div>
             </li>
             <li>
-              <b>df_conn</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_conn</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Connectivity of members</p>
               </div>
             </li>
             <li>
-              <b>df_mprop</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_mprop</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Material properties table</p>
@@ -1445,6 +1236,7 @@ stiffness matrix</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -1452,138 +1244,105 @@ stiffness matrix</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-<b>E</b>(                <code>float</code>
-)            –
-            <div class="doc-md-description">
-              <p>Modulus of elasticity of the member</p>
-            </div>
-          </li>
-          <li>
-<b>A</b>(                <code>float</code>
-)            –
-            <div class="doc-md-description">
-              <p>Cross-section area of member</p>
-            </div>
-          </li>
-          <li>
-<b>Iz</b>(                <code>float</code>
-)            –
-            <div class="doc-md-description">
-              <p>Second moment of area of cross-section of the member about the axis of bending</p>
-            </div>
-          </li>
-          <li>
-<b>L</b>(                <code>float</code>
-)            –
-            <div class="doc-md-description">
-              <p>Length of the member</p>
-            </div>
-          </li>
-          <li>
-<b>dc</b>(                <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
-)            –
-            <div class="doc-md-description">
-              <p>Direction cosines of the member</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>E</code></b>(                  <code><span title="float">float</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Modulus of elasticity of the member</p>
+              </div>
+            </li>
+            <li>
+<b><code>A</code></b>(                  <code><span title="float">float</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Cross-section area of member</p>
+              </div>
+            </li>
+            <li>
+<b><code>Iz</code></b>(                  <code><span title="float">float</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Second moment of area of cross-section of the member about the axis of bending</p>
+              </div>
+            </li>
+            <li>
+<b><code>L</code></b>(                  <code><span title="float">float</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Length of the member</p>
+              </div>
+            </li>
+            <li>
+<b><code>dc</code></b>(                  <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Direction cosines of the member</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_get_memprop</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the material properties of specified plane frame member</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    imem : int</span>
-<span class="sd">        Number of the member</span>
-<span class="sd">    df_xy : pd.DataFrame</span>
-<span class="sd">        Coordinates of nodes</span>
-<span class="sd">    df_conn : pd.DataFrame</span>
-<span class="sd">        Connectivity of members</span>
-<span class="sd">    df_mprop : pd.DataFrame</span>
-<span class="sd">        Material properties table</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_get_memprop(imem, df_xy, df_conn, df_mprop):
+    """Return the material properties of specified plane frame member
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    E : float</span>
-<span class="sd">        Modulus of elasticity of the member</span>
-<span class="sd">    A : float</span>
-<span class="sd">        Cross-section area of member</span>
-<span class="sd">    Iz : float</span>
-<span class="sd">        Second moment of area of cross-section of the member about the axis of bending</span>
-<span class="sd">    L : float</span>
-<span class="sd">        Length of the member</span>
-<span class="sd">    dc : NDArrayFloat</span>
-<span class="sd">        Direction cosines of the member</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">df_conn</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">imem</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="n">E</span> <span class="o">=</span> <span class="n">df_mprop</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">df_mprop</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">Iz</span> <span class="o">=</span> <span class="n">df_mprop</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-    <span class="n">xy1</span><span class="p">,</span> <span class="n">xy2</span> <span class="o">=</span> <span class="n">pf_get_endcoord</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">)</span>
-    <span class="n">L</span><span class="p">,</span> <span class="n">dc</span> <span class="o">=</span> <span class="n">pf_calclen</span><span class="p">(</span><span class="n">xy1</span><span class="p">,</span> <span class="n">xy2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">E</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">Iz</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">dc</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    imem : int
+        Number of the member
+    df_xy : pd.DataFrame
+        Coordinates of nodes
+    df_conn : pd.DataFrame
+        Connectivity of members
+    df_mprop : pd.DataFrame
+        Material properties table
+
+    Returns
+    -------
+    E : float
+        Modulus of elasticity of the member
+    A : float
+        Cross-section area of member
+    Iz : float
+        Second moment of area of cross-section of the member about the axis of bending
+    L : float
+        Length of the member
+    dc : NDArrayFloat
+        Direction cosines of the member
+    """
+    m = df_conn.iloc[imem - 1, 2] - 1
+    E = df_mprop.iloc[m, 0]
+    A = df_mprop.iloc[m, 1]
+    Iz = df_mprop.iloc[m, 2]
+    xy1, xy2 = pf_get_endcoord(imem, df_xy, df_conn)
+    L, dc = pf_calclen(xy1, xy2)
+    return E, A, Iz, L, dc</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_gstiff" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_gstiff</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_gstiff(imem, df_xy, df_conn, df_mprop)</code>
 
 <a href="#msa.pf.pf_gstiff" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Calculate the stiffness matrix of a plane frame member in strucutre
+    <div class="doc doc-contents ">
+
+        <p>Calculate the stiffness matrix of a plane frame member in strucutre
 coordinate system</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -1596,32 +1355,32 @@ coordinate system</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>imem</b>
-                  (<code>int</code>)
+              <b><code>imem</code></b>
+                  (<code><span title="int">int</span></code>)
               –
               <div class="doc-md-description">
                 <p>Number of the member</p>
               </div>
             </li>
             <li>
-              <b>df_xy</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_xy</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Coordinates of nodes</p>
               </div>
             </li>
             <li>
-              <b>df_conn</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_conn</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Connectivity of members</p>
               </div>
             </li>
             <li>
-              <b>df_mprop</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_mprop</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Material properties table</p>
@@ -1632,6 +1391,7 @@ coordinate system</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -1639,90 +1399,67 @@ coordinate system</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-                <code>NDArray</code>
-            –
-            <div class="doc-md-description">
-              <p>Global stiffness matrix of the member</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="NDArray">NDArray</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Global stiffness matrix of the member</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span>
-<span class="normal">280</span>
-<span class="normal">281</span>
-<span class="normal">282</span>
-<span class="normal">283</span>
-<span class="normal">284</span>
-<span class="normal">285</span>
-<span class="normal">286</span>
-<span class="normal">287</span>
-<span class="normal">288</span>
-<span class="normal">289</span>
-<span class="normal">290</span>
-<span class="normal">291</span>
-<span class="normal">292</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_gstiff</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the stiffness matrix of a plane frame member in strucutre</span>
-<span class="sd">    coordinate system</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    imem : int</span>
-<span class="sd">        Number of the member</span>
-<span class="sd">    df_xy : pd.DataFrame</span>
-<span class="sd">        Coordinates of nodes</span>
-<span class="sd">    df_conn : pd.DataFrame</span>
-<span class="sd">        Connectivity of members</span>
-<span class="sd">    df_mprop : pd.DataFrame</span>
-<span class="sd">        Material properties table</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_gstiff(imem, df_xy, df_conn, df_mprop):
+    """Calculate the stiffness matrix of a plane frame member in strucutre
+    coordinate system
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    NDArray</span>
-<span class="sd">        Global stiffness matrix of the member</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">E</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">Iz</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">dc</span> <span class="o">=</span> <span class="n">pf_get_memprop</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">)</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">pf_calcrot</span><span class="p">(</span><span class="n">dc</span><span class="p">)</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">pf_stiff</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">Iz</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">k</span> <span class="o">@</span> <span class="n">r</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    imem : int
+        Number of the member
+    df_xy : pd.DataFrame
+        Coordinates of nodes
+    df_conn : pd.DataFrame
+        Connectivity of members
+    df_mprop : pd.DataFrame
+        Material properties table
+
+    Returns
+    -------
+    NDArray
+        Global stiffness matrix of the member
+    """
+    E, A, Iz, L, dc = pf_get_memprop(imem, df_xy, df_conn, df_mprop)
+    r = pf_calcrot(dc)
+    k = pf_stiff(E, A, Iz, L)
+    return r.T @ k @ r</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_loadvec" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_loadvec</span><span class="p">(</span><span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_jtloads</span><span class="p">,</span> <span class="n">df_memloads</span><span class="p">,</span> <span class="n">ndof</span><span class="p">,</span> <span class="n">lm</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_loadvec(df_xy, df_conn, df_jtloads, df_memloads, ndof, lm)</code>
 
 <a href="#msa.pf.pf_loadvec" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Assemble structure load vector due to joint loads and loads applied
+    <div class="doc doc-contents ">
+
+        <p>Assemble structure load vector due to joint loads and loads applied
 directly on members</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -1735,47 +1472,47 @@ directly on members</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>df_xy</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_xy</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Coordinates of nodes</p>
               </div>
             </li>
             <li>
-              <b>df_conn</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_conn</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Connectivity of members</p>
               </div>
             </li>
             <li>
-              <b>df_jtloads</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_jtloads</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Nodal loads table</p>
               </div>
             </li>
             <li>
-              <b>df_memloads</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_memloads</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Member load table</p>
               </div>
             </li>
             <li>
-              <b>ndof</b>
-                  (<code>int</code>)
+              <b><code>ndof</code></b>
+                  (<code><span title="int">int</span></code>)
               –
               <div class="doc-md-description">
                 <p>Number of degrees of freedom of the structure</p>
               </div>
             </li>
             <li>
-              <b>lm</b>
+              <b><code>lm</code></b>
                   (<code><span title="msa.pf.NDArrayInt">NDArrayInt</span></code>)
               –
               <div class="doc-md-description">
@@ -1787,6 +1524,7 @@ directly on members</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -1794,101 +1532,72 @@ directly on members</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-                <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
-            –
-            <div class="doc-md-description">
-              <p>Modified load vector after superposing all member loads</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Modified load vector after superposing all member loads</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">438</span>
-<span class="normal">439</span>
-<span class="normal">440</span>
-<span class="normal">441</span>
-<span class="normal">442</span>
-<span class="normal">443</span>
-<span class="normal">444</span>
-<span class="normal">445</span>
-<span class="normal">446</span>
-<span class="normal">447</span>
-<span class="normal">448</span>
-<span class="normal">449</span>
-<span class="normal">450</span>
-<span class="normal">451</span>
-<span class="normal">452</span>
-<span class="normal">453</span>
-<span class="normal">454</span>
-<span class="normal">455</span>
-<span class="normal">456</span>
-<span class="normal">457</span>
-<span class="normal">458</span>
-<span class="normal">459</span>
-<span class="normal">460</span>
-<span class="normal">461</span>
-<span class="normal">462</span>
-<span class="normal">463</span>
-<span class="normal">464</span>
-<span class="normal">465</span>
-<span class="normal">466</span>
-<span class="normal">467</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_loadvec</span><span class="p">(</span><span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_jtloads</span><span class="p">,</span> <span class="n">df_memloads</span><span class="p">,</span> <span class="n">ndof</span><span class="p">,</span> <span class="n">lm</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Assemble structure load vector due to joint loads and loads applied</span>
-<span class="sd">    directly on members</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    df_xy : pd.DataFrame</span>
-<span class="sd">        Coordinates of nodes</span>
-<span class="sd">    df_conn : pd.DataFrame</span>
-<span class="sd">        Connectivity of members</span>
-<span class="sd">    df_jtloads : pd.DataFrame</span>
-<span class="sd">        Nodal loads table</span>
-<span class="sd">    df_memloads : pd.DataFrame</span>
-<span class="sd">        Member load table</span>
-<span class="sd">    ndof : int</span>
-<span class="sd">        Number of degrees of freedom of the structure</span>
-<span class="sd">    lm : NDArrayInt</span>
-<span class="sd">        Location matrix, specifying degree of freedom number for each node</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_loadvec(df_xy, df_conn, df_jtloads, df_memloads, ndof, lm):
+    """Assemble structure load vector due to joint loads and loads applied
+    directly on members
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    NDArrayFloat</span>
-<span class="sd">        Modified load vector after superposing all member loads</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ndof</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="n">P</span> <span class="o">=</span> <span class="n">pf_assem_loadvec_jl</span><span class="p">(</span><span class="n">lm</span><span class="p">,</span> <span class="n">df_jtloads</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
-    <span class="n">nml</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_memloads</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">iload</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nml</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">P</span> <span class="o">=</span> <span class="n">pf_assem_loadvec_ml</span><span class="p">(</span><span class="n">iload</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">lm</span><span class="p">,</span> <span class="n">df_memloads</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">P</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    df_xy : pd.DataFrame
+        Coordinates of nodes
+    df_conn : pd.DataFrame
+        Connectivity of members
+    df_jtloads : pd.DataFrame
+        Nodal loads table
+    df_memloads : pd.DataFrame
+        Member load table
+    ndof : int
+        Number of degrees of freedom of the structure
+    lm : NDArrayInt
+        Location matrix, specifying degree of freedom number for each node
+
+    Returns
+    -------
+    NDArrayFloat
+        Modified load vector after superposing all member loads
+    """
+    P = np.zeros((ndof, 1), dtype=float)
+    P = pf_assem_loadvec_jl(lm, df_jtloads, P)
+    nml = len(df_memloads)
+    for iload in range(1, nml + 1):
+        P = pf_assem_loadvec_ml(iload, df_xy, df_conn, lm, df_memloads, P)
+    return P</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_mem_endforces" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_mem_endforces</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">,</span> <span class="n">df_memloads</span><span class="p">,</span> <span class="n">lm</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_mem_endforces(imem, df_xy, df_conn, df_mprop, df_memloads, lm, x)</code>
 
 <a href="#msa.pf.pf_mem_endforces" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Calculate member end forces from joint displacements, for one chosen member</p>
+    <div class="doc doc-contents ">
+
+        <p>Calculate member end forces from joint displacements, for one chosen member</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -1901,47 +1610,47 @@ directly on members</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>imem</b>
-                  (<code>int</code>)
+              <b><code>imem</code></b>
+                  (<code><span title="int">int</span></code>)
               –
               <div class="doc-md-description">
                 <p>Number of the member</p>
               </div>
             </li>
             <li>
-              <b>df_xy</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_xy</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Coordinates of nodes</p>
               </div>
             </li>
             <li>
-              <b>df_conn</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_conn</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Connectivity of members</p>
               </div>
             </li>
             <li>
-              <b>df_mprop</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_mprop</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Material properties table</p>
               </div>
             </li>
             <li>
-              <b>df_memloads</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_memloads</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Member load table</p>
               </div>
             </li>
             <li>
-              <b>lm</b>
+              <b><code>lm</code></b>
                   (<code><span title="msa.pf.NDArrayInt">NDArrayInt</span></code>)
               –
               <div class="doc-md-description">
@@ -1949,7 +1658,7 @@ directly on members</p>
               </div>
             </li>
             <li>
-              <b>x</b>
+              <b><code>x</code></b>
                   (<code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>)
               –
               <div class="doc-md-description">
@@ -1961,6 +1670,7 @@ directly on members</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -1968,136 +1678,90 @@ directly on members</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-                <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
-            –
-            <div class="doc-md-description">
-              <p>Vector of member end forces</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Vector of member end forces</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">471</span>
-<span class="normal">472</span>
-<span class="normal">473</span>
-<span class="normal">474</span>
-<span class="normal">475</span>
-<span class="normal">476</span>
-<span class="normal">477</span>
-<span class="normal">478</span>
-<span class="normal">479</span>
-<span class="normal">480</span>
-<span class="normal">481</span>
-<span class="normal">482</span>
-<span class="normal">483</span>
-<span class="normal">484</span>
-<span class="normal">485</span>
-<span class="normal">486</span>
-<span class="normal">487</span>
-<span class="normal">488</span>
-<span class="normal">489</span>
-<span class="normal">490</span>
-<span class="normal">491</span>
-<span class="normal">492</span>
-<span class="normal">493</span>
-<span class="normal">494</span>
-<span class="normal">495</span>
-<span class="normal">496</span>
-<span class="normal">497</span>
-<span class="normal">498</span>
-<span class="normal">499</span>
-<span class="normal">500</span>
-<span class="normal">501</span>
-<span class="normal">502</span>
-<span class="normal">503</span>
-<span class="normal">504</span>
-<span class="normal">505</span>
-<span class="normal">506</span>
-<span class="normal">507</span>
-<span class="normal">508</span>
-<span class="normal">509</span>
-<span class="normal">510</span>
-<span class="normal">511</span>
-<span class="normal">512</span>
-<span class="normal">513</span>
-<span class="normal">514</span>
-<span class="normal">515</span>
-<span class="normal">516</span>
-<span class="normal">517</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_mem_endforces</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">,</span> <span class="n">df_memloads</span><span class="p">,</span> <span class="n">lm</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate member end forces from joint displacements, for one chosen member</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    imem : int</span>
-<span class="sd">        Number of the member</span>
-<span class="sd">    df_xy : pd.DataFrame</span>
-<span class="sd">        Coordinates of nodes</span>
-<span class="sd">    df_conn : pd.DataFrame</span>
-<span class="sd">        Connectivity of members</span>
-<span class="sd">    df_mprop : pd.DataFrame</span>
-<span class="sd">        Material properties table</span>
-<span class="sd">    df_memloads : pd.DataFrame</span>
-<span class="sd">        Member load table</span>
-<span class="sd">    lm : NDArrayInt</span>
-<span class="sd">        Location matrix, specifying degree of freedom number for each node</span>
-<span class="sd">    x : NDArrayFloat</span>
-<span class="sd">        Displacement vector</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_mem_endforces(imem, df_xy, df_conn, df_mprop, df_memloads, lm, x):
+    """Calculate member end forces from joint displacements, for one chosen member
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    NDArrayFloat</span>
-<span class="sd">        Vector of member end forces</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">xy1</span><span class="p">,</span> <span class="n">xy2</span> <span class="o">=</span> <span class="n">pf_get_endcoord</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">)</span>
-    <span class="n">L</span><span class="p">,</span> <span class="n">dc</span> <span class="o">=</span> <span class="n">pf_calclen</span><span class="p">(</span><span class="n">xy1</span><span class="p">,</span> <span class="n">xy2</span><span class="p">)</span>
-    <span class="n">E</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">Iz</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">dc</span> <span class="o">=</span> <span class="n">pf_get_memprop</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">)</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">pf_calcrot</span><span class="p">(</span><span class="n">dc</span><span class="p">)</span>
-    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="n">memdof</span> <span class="o">=</span> <span class="n">pf_get_dof</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">lm</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">memdof</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-            <span class="n">idof</span> <span class="o">=</span> <span class="n">memdof</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">idof</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="c1"># uu = np.dot(r, u)</span>
-    <span class="n">uu</span> <span class="o">=</span> <span class="n">r</span> <span class="o">@</span> <span class="n">u</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">pf_stiff</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">Iz</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">k</span> <span class="o">@</span> <span class="n">uu</span>
-    <span class="c1"># f = np.dot(k, uu)</span>
+    Parameters
+    ----------
+    imem : int
+        Number of the member
+    df_xy : pd.DataFrame
+        Coordinates of nodes
+    df_conn : pd.DataFrame
+        Connectivity of members
+    df_mprop : pd.DataFrame
+        Material properties table
+    df_memloads : pd.DataFrame
+        Member load table
+    lm : NDArrayInt
+        Location matrix, specifying degree of freedom number for each node
+    x : NDArrayFloat
+        Displacement vector
 
-    <span class="n">nml</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_memloads</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nml</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">df_memloads</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">imem</span><span class="p">:</span>
-            <span class="n">f</span> <span class="o">+=</span> <span class="n">df_memloads</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">f</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Returns
+    -------
+    NDArrayFloat
+        Vector of member end forces
+    """
+    xy1, xy2 = pf_get_endcoord(imem, df_xy, df_conn)
+    L, dc = pf_calclen(xy1, xy2)
+    E, A, Iz, L, dc = pf_get_memprop(imem, df_xy, df_conn, df_mprop)
+    r = pf_calcrot(dc)
+    u = np.zeros((6, 1), dtype=float)
+    memdof = pf_get_dof(imem, df_conn, lm)
+    for i in range(6):
+        if memdof[i]:
+            idof = memdof[i]
+            u[i] = x[idof - 1]
+    # uu = np.dot(r, u)
+    uu = r @ u
+    k = pf_stiff(E, A, Iz, L)
+    f = np.zeros((6, 1), dtype=float)
+    f = k @ uu
+    # f = np.dot(k, uu)
+
+    nml = len(df_memloads)
+    for i in range(nml):
+        if df_memloads.iloc[i, 0] == imem:
+            f += df_memloads.iloc[i, 1:].values.reshape(6, 1)
+    return f</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_ssm" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_ssm</span><span class="p">(</span><span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_bc</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_ssm(df_xy, df_conn, df_bc, df_mprop)</code>
 
 <a href="#msa.pf.pf_ssm" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Assemble structure stiffness matrix by superposing stiffness matrices of
+    <div class="doc doc-contents ">
+
+        <p>Assemble structure stiffness matrix by superposing stiffness matrices of
 individual members</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -2110,32 +1774,32 @@ individual members</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>df_xy</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_xy</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Coordinates of nodes</p>
               </div>
             </li>
             <li>
-              <b>df_conn</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_conn</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Connectivity of members</p>
               </div>
             </li>
             <li>
-              <b>df_bc</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_bc</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Zero boundary conditions table, for nodes with one or more constrained degrees of freedom</p>
               </div>
             </li>
             <li>
-              <b>df_mprop</b>
-                  (<code><span title="pandas">pd</span>.<span title="pandas.DataFrame">DataFrame</span></code>)
+              <b><code>df_mprop</code></b>
+                  (<code><span title="pandas.DataFrame">DataFrame</span></code>)
               –
               <div class="doc-md-description">
                 <p>Material properties table</p>
@@ -2146,6 +1810,7 @@ individual members</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -2153,117 +1818,87 @@ individual members</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-<b>ssm</b>(                <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
-)            –
-            <div class="doc-md-description">
-              <p>Structure stiffness matrix of the structure</p>
-            </div>
-          </li>
-          <li>
-<b>lm</b>(                <code><span title="msa.pf.NDArrayInt">NDArrayInt</span></code>
-)            –
-            <div class="doc-md-description">
-              <p>Location matrix, specifying degree of freedom number for each node</p>
-            </div>
-          </li>
-          <li>
-<b>ndof</b>(                <code>int</code>
-)            –
-            <div class="doc-md-description">
-              <p>Number of degrees of freedom of the structure</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ssm</code></b>(                  <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Structure stiffness matrix of the structure</p>
+              </div>
+            </li>
+            <li>
+<b><code>lm</code></b>(                  <code><span title="msa.pf.NDArrayInt">NDArrayInt</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Location matrix, specifying degree of freedom number for each node</p>
+              </div>
+            </li>
+            <li>
+<b><code>ndof</code></b>(                  <code><span title="int">int</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Number of degrees of freedom of the structure</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">333</span>
-<span class="normal">334</span>
-<span class="normal">335</span>
-<span class="normal">336</span>
-<span class="normal">337</span>
-<span class="normal">338</span>
-<span class="normal">339</span>
-<span class="normal">340</span>
-<span class="normal">341</span>
-<span class="normal">342</span>
-<span class="normal">343</span>
-<span class="normal">344</span>
-<span class="normal">345</span>
-<span class="normal">346</span>
-<span class="normal">347</span>
-<span class="normal">348</span>
-<span class="normal">349</span>
-<span class="normal">350</span>
-<span class="normal">351</span>
-<span class="normal">352</span>
-<span class="normal">353</span>
-<span class="normal">354</span>
-<span class="normal">355</span>
-<span class="normal">356</span>
-<span class="normal">357</span>
-<span class="normal">358</span>
-<span class="normal">359</span>
-<span class="normal">360</span>
-<span class="normal">361</span>
-<span class="normal">362</span>
-<span class="normal">363</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_ssm</span><span class="p">(</span><span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_bc</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Assemble structure stiffness matrix by superposing stiffness matrices of</span>
-<span class="sd">    individual members</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    df_xy : pd.DataFrame</span>
-<span class="sd">        Coordinates of nodes</span>
-<span class="sd">    df_conn : pd.DataFrame</span>
-<span class="sd">        Connectivity of members</span>
-<span class="sd">    df_bc : pd.DataFrame</span>
-<span class="sd">        Zero boundary conditions table, for nodes with one or more constrained degrees of freedom</span>
-<span class="sd">    df_mprop : pd.DataFrame</span>
-<span class="sd">        Material properties table</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_ssm(df_xy, df_conn, df_bc, df_mprop):
+    """Assemble structure stiffness matrix by superposing stiffness matrices of
+    individual members
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    ssm : NDArrayFloat</span>
-<span class="sd">        Structure stiffness matrix of the structure</span>
-<span class="sd">    lm : NDArrayInt</span>
-<span class="sd">        Location matrix, specifying degree of freedom number for each node</span>
-<span class="sd">    ndof : int</span>
-<span class="sd">        Number of degrees of freedom of the structure</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_xy</span><span class="p">)</span>
-    <span class="n">lm</span><span class="p">,</span> <span class="n">ndof</span> <span class="o">=</span> <span class="n">pf_calclm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">df_bc</span><span class="p">)</span>
-    <span class="n">nmem</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_conn</span><span class="p">)</span>
-    <span class="n">ssm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ndof</span><span class="p">,</span> <span class="n">ndof</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">imem</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nmem</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">ssm</span> <span class="o">=</span> <span class="n">pf_assemssm</span><span class="p">(</span><span class="n">imem</span><span class="p">,</span> <span class="n">df_xy</span><span class="p">,</span> <span class="n">df_conn</span><span class="p">,</span> <span class="n">df_mprop</span><span class="p">,</span> <span class="n">lm</span><span class="p">,</span> <span class="n">ssm</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ssm</span><span class="p">,</span> <span class="n">lm</span><span class="p">,</span> <span class="n">ndof</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    Parameters
+    ----------
+    df_xy : pd.DataFrame
+        Coordinates of nodes
+    df_conn : pd.DataFrame
+        Connectivity of members
+    df_bc : pd.DataFrame
+        Zero boundary conditions table, for nodes with one or more constrained degrees of freedom
+    df_mprop : pd.DataFrame
+        Material properties table
+
+    Returns
+    -------
+    ssm : NDArrayFloat
+        Structure stiffness matrix of the structure
+    lm : NDArrayInt
+        Location matrix, specifying degree of freedom number for each node
+    ndof : int
+        Number of degrees of freedom of the structure
+    """
+    n = len(df_xy)
+    lm, ndof = pf_calclm(n, df_bc)
+    nmem = len(df_conn)
+    ssm = np.zeros((ndof, ndof), dtype=float)
+    for imem in range(1, nmem + 1):
+        ssm = pf_assemssm(imem, df_xy, df_conn, df_mprop, lm, ssm)
+    return ssm, lm, ndof</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.pf_stiff" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pf_stiff</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">Iz</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span></code>
+            <code class="highlight language-python">pf_stiff(E, A, Iz, L)</code>
 
 <a href="#msa.pf.pf_stiff" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Calculate stiffness of a plane frame member in local coordinate system</p>
+    <div class="doc doc-contents ">
+
+        <p>Calculate stiffness of a plane frame member in local coordinate system</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -2276,32 +1911,32 @@ individual members</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>E</b>
-                  (<code>float</code>)
+              <b><code>E</code></b>
+                  (<code><span title="float">float</span></code>)
               –
               <div class="doc-md-description">
                 <p>Modulus of elasticity of material of the member</p>
               </div>
             </li>
             <li>
-              <b>A</b>
-                  (<code>float</code>)
+              <b><code>A</code></b>
+                  (<code><span title="float">float</span></code>)
               –
               <div class="doc-md-description">
                 <p>Cross-section area of the member</p>
               </div>
             </li>
             <li>
-              <b>Iz</b>
-                  (<code>float</code>)
+              <b><code>Iz</code></b>
+                  (<code><span title="float">float</span></code>)
               –
               <div class="doc-md-description">
                 <p>Second moment of area of the member about the axis of bending</p>
               </div>
             </li>
             <li>
-              <b>L</b>
-                  (<code>float</code>)
+              <b><code>L</code></b>
+                  (<code><span title="float">float</span></code>)
               –
               <div class="doc-md-description">
                 <p>Length of the member</p>
@@ -2312,6 +1947,7 @@ individual members</p>
     </tr>
   </tbody>
 </table>
+
 <table class="field-list">
   <colgroup>
     <col class="field-name" />
@@ -2319,130 +1955,87 @@ individual members</p>
   </colgroup>
   <tbody valign="top">
     <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-                <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
-            –
-            <div class="doc-md-description">
-              <p>Stiffness matrix of member about local axes</p>
-            </div>
-          </li>
-      </ul>
-    </td>
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="msa.pf.NDArrayFloat">NDArrayFloat</span></code>
+              –
+              <div class="doc-md-description">
+                <p>Stiffness matrix of member about local axes</p>
+              </div>
+            </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pf_stiff</span><span class="p">(</span><span class="n">E</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">Iz</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">L</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArrayFloat</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate stiffness of a plane frame member in local coordinate system</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    E : float</span>
-<span class="sd">        Modulus of elasticity of material of the member</span>
-<span class="sd">    A : float</span>
-<span class="sd">        Cross-section area of the member</span>
-<span class="sd">    Iz : float</span>
-<span class="sd">        Second moment of area of the member about the axis of bending</span>
-<span class="sd">    L : float</span>
-<span class="sd">        Length of the member</span>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def pf_stiff(E: float, A: float, Iz: float, L: float) -&gt; NDArrayFloat:
+    """Calculate stiffness of a plane frame member in local coordinate system
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    NDArrayFloat</span>
-<span class="sd">        Stiffness matrix of member about local axes</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">*</span> <span class="n">A</span> <span class="o">/</span> <span class="n">L</span>
-    <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    Parameters
+    ----------
+    E : float
+        Modulus of elasticity of material of the member
+    A : float
+        Cross-section area of the member
+    Iz : float
+        Second moment of area of the member about the axis of bending
+    L : float
+        Length of the member
 
-    <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">12.0</span> <span class="o">*</span> <span class="n">E</span> <span class="o">*</span> <span class="n">Iz</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span><span class="o">**</span><span class="mi">3</span>
-    <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6.0</span> <span class="o">*</span> <span class="n">E</span> <span class="o">*</span> <span class="n">Iz</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span><span class="o">**</span><span class="mi">2</span>
-    <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    Returns
+    -------
+    NDArrayFloat
+        Stiffness matrix of member about local axes
+    """
+    k = np.zeros((6, 6), dtype=float)
+    k[0, 0] = float(E) * A / L
+    k[0, 3] = -k[0, 0]
 
-    <span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.0</span> <span class="o">*</span> <span class="n">E</span> <span class="o">*</span> <span class="n">Iz</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span>
-    <span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-    <span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mf">2.0</span>
+    k[1, 1] = (12.0 * E * Iz) / L**3
+    k[1, 2] = (6.0 * E * Iz) / L**2
+    k[1, 4] = -k[1, 1]
+    k[1, 5] = k[1, 2]
 
-    <span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    k[2, 2] = (4.0 * E * Iz) / L
+    k[2, 4] = -k[1, 2]
+    k[2, 5] = k[2, 2] / 2.0
 
-    <span class="n">k</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">k</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    k[3, 3] = k[0, 0]
 
-    <span class="n">k</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    k[4, 4] = k[1, 1]
+    k[4, 5] = -k[1, 2]
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-            <span class="n">k</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+    k[5, 5] = k[2, 2]
 
-    <span class="k">return</span> <span class="n">k</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+    for i in range(6):
+        for j in range(i):
+            k[i, j] = k[j, i]
+
+    return k</code></pre>
+            </details>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h2 id="msa.pf.print_mat" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">print_mat</span><span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span></code>
+            <code class="highlight language-python">print_mat(header, k)</code>
 
 <a href="#msa.pf.print_mat" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-  <div class="doc doc-contents ">
-  
-      <p>Print the array k, preceded by a header string. Each element of k is
+    <div class="doc doc-contents ">
+
+        <p>Print the array k, preceded by a header string. Each element of k is
 printed using the format string fmt</p>
+
 
 <table class="field-list">
   <colgroup>
@@ -2455,16 +2048,16 @@ printed using the format string fmt</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>header</b>
-                  (<code>str</code>)
+              <b><code>header</code></b>
+                  (<code><span title="str">str</span></code>)
               –
               <div class="doc-md-description">
                 <p>Header to be printed before printing the matrix</p>
               </div>
             </li>
             <li>
-              <b>k</b>
-                  (<code><span title="numpy.typing">npt</span>.<span title="numpy.typing.NDArray">NDArray</span>[<span title="typing.Any">Any</span>]</code>)
+              <b><code>k</code></b>
+                  (<code><span title="numpy.typing.NDArray">NDArray</span>[<span title="typing.Any">Any</span>]</code>)
               –
               <div class="doc-md-description">
                 <p>Matrix to be printed</p>
@@ -2475,44 +2068,28 @@ printed using the format string fmt</p>
     </tr>
   </tbody>
 </table>
-      <details class="quote">
-        <summary>Source code in <code>msa\pf.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">640</span>
-<span class="normal">641</span>
-<span class="normal">642</span>
-<span class="normal">643</span>
-<span class="normal">644</span>
-<span class="normal">645</span>
-<span class="normal">646</span>
-<span class="normal">647</span>
-<span class="normal">648</span>
-<span class="normal">649</span>
-<span class="normal">650</span>
-<span class="normal">651</span>
-<span class="normal">652</span>
-<span class="normal">653</span>
-<span class="normal">654</span>
-<span class="normal">655</span>
-<span class="normal">656</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">print_mat</span><span class="p">(</span><span class="n">header</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Print the array k, preceded by a header string. Each element of k is</span>
-<span class="sd">    printed using the format string fmt</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    header : str</span>
-<span class="sd">        Header to be printed before printing the matrix</span>
-<span class="sd">    k : npt.NDArray[Any]</span>
-<span class="sd">        Matrix to be printed</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">shape</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">header</span><span class="si">}</span><span class="s2"> Size: </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2"> x </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s2">12.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
+            <details class="quote">
+              <summary>Source code in <code>msa/pf.py</code></summary>
+              <pre class="highlight"><code class="language-python">def print_mat(header: str, k: npt.NDArray[Any]) -&gt; None:
+    """Print the array k, preceded by a header string. Each element of k is
+    printed using the format string fmt
+
+    Parameters
+    ----------
+    header : str
+        Header to be printed before printing the matrix
+    k : npt.NDArray[Any]
+        Matrix to be printed
+    """
+    m, n = k.shape
+    print(f"{header} Size: {m} x {n}")
+    for i in range(m):
+        for j in range(n):
+            print(f"{k[i, j]:12.4f}", end="")
+        print()</code></pre>
+            </details>
+    </div>
 
 </div>
 
@@ -2520,7 +2097,7 @@ printed using the format string fmt</p>
 
   </div>
 
-  </div>
+    </div>
 
 </div>
               
@@ -2555,17 +2132,18 @@ printed using the format string fmt</p>
     
   </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme_extra.js" defer></script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../javascripts/mathjax.js" defer></script>
-      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
-      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
-        };
+        });
     </script>
 
 </body>
